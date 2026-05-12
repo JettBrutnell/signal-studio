@@ -2,179 +2,141 @@ import FadeIn from './fade-in'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
-      {/* Dot grid background */}
-      <div className="absolute inset-0 bg-dot-grid opacity-50 pointer-events-none" />
+    <section className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden">
+      <div className="absolute inset-0 bg-dot-grid opacity-40 pointer-events-none" />
+      <div className="absolute top-1/4 right-[-10%] w-[500px] h-[500px] rounded-full bg-accent/10 blur-[140px] pointer-events-none" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 right-[-10%] w-[600px] h-[600px] rounded-full bg-accent/15 blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[-5%] w-[400px] h-[400px] rounded-full bg-accent/8 blur-[100px] pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-6 py-20 lg:py-0 w-full">
+      <div className="relative max-w-6xl mx-auto px-6 py-16 lg:py-0 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — Content */}
+          {/* Copy */}
           <div>
-            <FadeIn delay={0}>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-                Independent Design Studio &middot; Est. 2018
+            <FadeIn>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-5">
+                Conversion-focused creative studio
               </p>
             </FadeIn>
-
-            <FadeIn delay={100}>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-medium leading-[1.1] tracking-tight">
-                Websites and ads built to turn attention into{' '}
-                <em className="font-serif italic font-normal">booked enquiries.</em>
+            <FadeIn delay={80}>
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-[1.15] tracking-tight">
+                Creative for paid acquisition teams that need ads, landing pages, and campaign assets{' '}
+                <em className="font-serif italic font-normal">built to convert.</em>
               </h1>
             </FadeIn>
-
-            <FadeIn delay={200}>
-              <p className="mt-6 text-muted-foreground text-lg leading-relaxed max-w-xl">
-                Signal helps appointment-based businesses sharpen their online presence with
-                conversion-first landing pages, websites, and static ad creative.
+            <FadeIn delay={160}>
+              <p className="mt-5 text-muted-foreground text-[15px] leading-relaxed max-w-lg">
+                Signal Studio builds performance creative for media buyers, growth teams, and DTC brands.
+                Static ads, landing pages, creative testing systems, and campaign assets &mdash; designed
+                around your funnel, delivered on deadline.
               </p>
             </FadeIn>
-
-            <FadeIn delay={300}>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-2.5 bg-foreground text-background font-medium px-6 py-3.5 rounded-full hover:bg-foreground/90 transition-all text-sm"
-                >
-                  Book a Strategy Call
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    className="transition-transform duration-300 group-hover:translate-x-0.5"
-                  >
-                    <circle cx="9" cy="9" r="8" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M7.5 6L11 9L7.5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+            <FadeIn delay={240}>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <a href="#contact" className="group inline-flex items-center gap-2 bg-foreground text-background font-medium px-5 py-3 rounded-full text-sm hover:bg-foreground/90 transition">
+                  Request a Project Fit Review
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5"><path d="M3 8h10M10 4l3.5 4-3.5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </a>
-                <a
-                  href="#process"
-                  className="text-sm font-medium text-foreground hover:text-muted-foreground transition flex items-center gap-1.5"
-                >
-                  See How It Works <span>&rarr;</span>
+                <a href="#case-studies" className="text-sm font-medium text-foreground hover:text-muted-foreground transition">
+                  View Case Studies &darr;
                 </a>
               </div>
             </FadeIn>
 
-            <FadeIn delay={400}>
-              <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                <span className="border border-border rounded-full px-3 py-1 bg-white/60 backdrop-blur-sm">Landing pages</span>
-                <span className="border border-border rounded-full px-3 py-1 bg-white/60 backdrop-blur-sm">Static ads</span>
-                <span className="border border-border rounded-full px-3 py-1 bg-white/60 backdrop-blur-sm">Conversion audits</span>
+            {/* Proof row */}
+            <FadeIn delay={320}>
+              <div className="mt-8 pt-6 border-t border-border flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  12+ campaign systems delivered
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  &lt; 5-day avg. turnaround
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  92% repeat-client rate
+                </span>
               </div>
             </FadeIn>
           </div>
 
-          {/* Right — Mockup Stack */}
-          <FadeIn delay={300} direction="right" className="relative hidden lg:block h-[480px]">
-            {/* Main browser mockup */}
-            <div className="absolute top-0 left-0 w-[340px] bg-white rounded-2xl border border-border shadow-lg shadow-black/5 overflow-hidden card-hover">
-              <div className="px-3 py-2.5 border-b border-border flex items-center gap-1.5 bg-muted/50">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-                <span className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-                <span className="ml-2 text-[10px] text-muted-foreground bg-white rounded-md px-3 py-0.5 flex-1 text-center border border-border">
-                  meridian-clinic.co.uk
-                </span>
-              </div>
-              <div className="p-6">
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">
-                  Meridian Clinic
-                </p>
-                <p className="text-base font-medium leading-snug">
-                  Better skin in
-                  <br />
-                  three sessions.
-                </p>
-                <p className="text-[11px] text-muted-foreground mt-3 leading-relaxed">
-                  Evidence-based skin consultations. Fast results. Real expertise.
-                </p>
-                <div className="mt-5 flex gap-2">
-                  <span className="bg-foreground text-background text-[10px] font-medium px-4 py-1.5 rounded-full">
-                    Book now
-                  </span>
-                  <span className="border border-border text-[10px] px-4 py-1.5 rounded-full">
-                    Learn more
-                  </span>
-                </div>
-                {/* Fake hero image placeholder */}
-                <div className="mt-5 rounded-lg bg-gradient-to-br from-muted to-border h-20 flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-muted-foreground/40">
-                    <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                    <circle cx="8.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M2 16l5-4 3 3 4-5 8 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            {/* Stat card overlay */}
-            <div className="absolute top-8 right-0 w-[210px] bg-white rounded-2xl border border-border shadow-lg shadow-black/5 p-5 card-hover">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">
-                  Booking leads
-                </span>
-                <span className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-xs">&nearr;</span>
-              </div>
-              <p className="text-3xl font-semibold tracking-tight">+38%</p>
-              <p className="text-[11px] text-muted-foreground mt-1">vs. previous quarter</p>
-              <div className="mt-4 h-10 flex items-end gap-1">
-                <span className="w-full h-3 bg-muted rounded-sm" />
-                <span className="w-full h-5 bg-muted rounded-sm" />
-                <span className="w-full h-4 bg-muted rounded-sm" />
-                <span className="w-full h-7 bg-muted rounded-sm" />
-                <span className="w-full h-6 bg-border rounded-sm" />
-                <span className="w-full h-9 bg-accent/60 rounded-sm" />
-                <span className="w-full h-10 bg-accent rounded-sm" />
-              </div>
-            </div>
-
-            {/* Notification card */}
-            <div className="absolute right-4 top-[220px] w-[200px] bg-white rounded-xl border border-border shadow-md shadow-black/5 p-3 card-hover">
-              <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 bg-accent rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7l4 4 6-8" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+          {/* Visual collage */}
+          <FadeIn delay={200} direction="right" className="relative hidden lg:block h-[520px]">
+            {/* Ad variant card */}
+            <div className="absolute top-0 left-0 w-[180px] bg-white rounded-xl border border-border shadow-md overflow-hidden card-hover">
+              <div className="h-[140px] bg-gradient-to-br from-foreground to-foreground/80 p-4 flex flex-col justify-between text-background">
+                <span className="text-[9px] uppercase tracking-wider opacity-60">Meta &middot; 1080&times;1080</span>
                 <div>
-                  <p className="text-[11px] font-medium leading-tight">New booking received</p>
-                  <p className="text-[10px] text-muted-foreground mt-0.5">via landing page &middot; 2m ago</p>
+                  <p className="text-xs font-medium leading-tight">Book your free<br/>skin consultation</p>
+                  <span className="mt-2 inline-block text-[8px] bg-accent text-accent-foreground px-2 py-0.5 rounded-full font-medium">Book Now &rarr;</span>
+                </div>
+              </div>
+              <div className="px-3 py-2 flex items-center justify-between">
+                <span className="text-[9px] text-muted-foreground">Variant A</span>
+                <span className="text-[9px] text-accent font-medium">3.2% CTR</span>
+              </div>
+            </div>
+
+            {/* Landing page mockup */}
+            <div className="absolute top-4 right-0 w-[240px] bg-white rounded-xl border border-border shadow-lg overflow-hidden card-hover">
+              <div className="px-3 py-1.5 border-b border-border flex items-center gap-1 bg-muted/50">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/50" />
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400/50" />
+                <span className="ml-1.5 text-[8px] text-muted-foreground bg-white rounded px-2 py-0.5 flex-1 text-center border border-border">client-lp.com</span>
+              </div>
+              <div className="p-4">
+                <div className="h-16 bg-gradient-to-br from-muted to-border rounded-lg mb-3" />
+                <div className="space-y-1.5">
+                  <div className="h-2 bg-foreground/10 rounded w-3/4" />
+                  <div className="h-2 bg-foreground/10 rounded w-full" />
+                  <div className="h-2 bg-foreground/10 rounded w-2/3" />
+                </div>
+                <div className="mt-3 flex gap-1.5">
+                  <span className="h-6 bg-foreground text-background text-[8px] px-3 rounded-full flex items-center">Get Started</span>
+                  <span className="h-6 border border-border text-[8px] px-3 rounded-full flex items-center">Learn More</span>
                 </div>
               </div>
             </div>
 
-            {/* Bottom flow card */}
-            <div className="absolute bottom-0 left-4 right-4 bg-foreground text-background rounded-2xl p-5 shadow-lg">
+            {/* Variant testing card */}
+            <div className="absolute top-[200px] left-[20px] w-[200px] bg-foreground text-background rounded-xl p-4 shadow-lg card-hover">
+              <span className="text-[9px] uppercase tracking-wider text-background/40">Creative testing</span>
+              <p className="text-sm font-medium mt-2">4 hook variants</p>
+              <p className="text-[11px] text-background/50 mt-1">Testing headline, visual, CTA, and social proof angles</p>
+              <div className="mt-3 grid grid-cols-4 gap-1">
+                {['A', 'B', 'C', 'D'].map((v) => (
+                  <div key={v} className={`h-10 rounded text-[8px] flex items-center justify-center font-medium ${v === 'B' ? 'bg-accent text-accent-foreground' : 'bg-background/10'}`}>{v}</div>
+                ))}
+              </div>
+              <p className="text-[9px] text-accent mt-2">Variant B: +42% vs. control</p>
+            </div>
+
+            {/* Performance stat */}
+            <div className="absolute right-[20px] top-[260px] w-[150px] bg-white rounded-xl border border-border shadow-md p-3 card-hover">
+              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Campaign ROAS</span>
+              <p className="text-2xl font-semibold tracking-tight mt-1">3.2x</p>
+              <div className="mt-2 h-6 flex items-end gap-0.5">
+                {[3, 5, 4, 6, 5, 8, 7, 9].map((h, i) => (
+                  <span key={i} className={`w-full rounded-sm ${i >= 6 ? 'bg-accent' : 'bg-muted'}`} style={{ height: `${h * 2.5}px` }} />
+                ))}
+              </div>
+            </div>
+
+            {/* Delivery badge */}
+            <div className="absolute bottom-8 left-4 right-4 bg-accent/10 border border-accent/20 rounded-xl p-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-accent rounded-xl flex items-center justify-center shrink-0">
-                  <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7l4 4 6-8" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-8" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Conversion flow verified</p>
-                  <p className="text-[11px] text-background/50">
-                    CTA &rarr; form &rarr; booking confirmation
-                  </p>
+                  <p className="text-xs font-medium">Assets delivered &middot; Day 4</p>
+                  <p className="text-[10px] text-muted-foreground">8 ad variants + landing page &middot; ready for launch</p>
                 </div>
-              </div>
-              {/* Mini progress bar */}
-              <div className="mt-4 h-1.5 bg-background/10 rounded-full overflow-hidden">
-                <div className="h-full w-full bg-accent rounded-full" />
               </div>
             </div>
           </FadeIn>
         </div>
       </div>
-
-      {/* Bottom fade to white */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   )
 }
