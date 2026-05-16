@@ -2,12 +2,12 @@ import FadeIn from './fade-in'
 import SectionHead from './section-head'
 
 const bullets = [
-  ['Strategy and design handled together', "You don't hand off a brief to a stranger and hope it survives the relay."],
+  ['Strategy and design handled together', "Your brief doesn't get passed through three people and come back unrecognizable."],
   ['Built for campaign use, not just aesthetics', 'Files arrive named, ratio-organized, and ready to run.'],
-  ['Clear communication, direct contact', 'You text the maker, not a project manager three timezones away.'],
+  ['Clear communication, direct contact', 'You talk to the team doing the work, not a project manager three timezones away.'],
   ['Fast, fixed-scope execution', 'Two to three weeks per engagement. No retainer pressure.'],
   ['Strong visual taste, plain language', 'No "elevating brand narratives." Sharp design, said simply.'],
-  ['Made for founders, media buyers, and lean teams', 'If you have five marketing people, you are probably bigger than my best clients.'],
+  ['Made for founders, media buyers, and lean teams', 'We work best with small teams that move fast and make decisions quickly.'],
 ]
 
 export default function WhySection() {
@@ -19,7 +19,7 @@ export default function WhySection() {
             num="04"
             kicker="Why Signal Studio"
             title="What you get when you skip the agency."
-            sub="Six things I commit to on every project. They replace the testimonial wall."
+            sub="Six things we commit to on every project. They replace the testimonial wall."
           />
         </FadeIn>
 

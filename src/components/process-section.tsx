@@ -2,11 +2,11 @@ import FadeIn from './fade-in'
 import SectionHead from './section-head'
 
 const steps = [
-  { n: '01', t: 'Diagnose', body: "We identify the offer, audience, campaign goal, and current friction points. A short call and an async questionnaire — no long discovery phase." },
+  { n: '01', t: 'Diagnose', body: "We identify the offer, audience, campaign goal, and current friction points. A short call and an async questionnaire — no drawn-out discovery phase." },
   { n: '02', t: 'Structure', body: "We map the page, ad, or campaign asset around the single action the viewer needs to take. Structure first, design second." },
   { n: '03', t: 'Design', body: "We create clean, conversion-focused creative with hierarchy, contrast, and platform constraints handled. You see work, not deliverables theatre." },
   { n: '04', t: 'Refine', body: "We tighten the copy, layout, and visual system based on feedback. Two structured rounds — focused, not endless." },
-  { n: '05', t: 'Deliver', body: "You receive final assets, source files where relevant, and clear handoff notes. Named and organized for your media or dev team." },
+  { n: '05', t: 'Deliver', body: "You receive final assets, source files where relevant, and clear handoff notes. Named, organized, and ready for your media or dev team." },
 ]
 
 export default function ProcessSection() {
@@ -39,9 +39,9 @@ export default function ProcessSection() {
         <FadeIn delay={300}>
           <div className="mt-10 p-6 lg:px-7 bg-paper-2 rounded-xl border border-line flex gap-[18px] items-center">
             <div className="flex-1 text-[15px] text-ink leading-[1.55]">
-              You work directly with the person making the creative.{' '}
+              You work directly with the team building the creative.{' '}
               <span className="text-ink-3">
-                No account manager layer. No bloated process. One email thread, one Loom feed.
+                No account manager layer. No bloated process. One point of contact, one project thread.
               </span>
             </div>
           </div>

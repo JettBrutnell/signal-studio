@@ -9,7 +9,7 @@ export default function HeroSection() {
         <FadeIn>
           <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.10em] uppercase text-ink-3 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-            <span>A studio of one &middot; Available for two projects this month</span>
+            <span>Creative agency &middot; Currently accepting new projects</span>
           </div>
         </FadeIn>
 
@@ -26,7 +26,7 @@ export default function HeroSection() {
         <FadeIn delay={160}>
           <p className="mt-9 mb-10 max-w-[620px] text-[19px] leading-[1.55] text-ink-2">
             Signal Studio helps businesses and media buyers turn offers, campaigns, and ideas
-            into polished creative built for clarity, speed, and conversion. One operator. Fixed scope. No agency overhead.
+            into polished creative built for clarity, speed, and conversion. Fixed scope. Fast delivery. Direct collaboration.
           </p>
         </FadeIn>
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
             {[
               ['Fixed scope', 'Defined deliverables. No surprise scope creep.'],
               ['Fast turnaround', 'Most projects ship in 2–3 weeks.'],
-              ['Direct contact', 'You work with the person making the work.'],
+              ['Direct contact', 'You work with the team making the work.'],
               ['Clean handoff', 'Source files, named, organized by use.'],
             ].map(([title, desc], i) => (
               <div key={i}>

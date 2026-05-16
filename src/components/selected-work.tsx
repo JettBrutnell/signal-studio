@@ -18,7 +18,7 @@ const projects = [
     label: 'Spec concept',
     name: 'Salt + Sky Beverage',
     type: 'F&B · seasonal launch',
-    problem: 'Showed how a small launch could ship a full campaign set on a tight timeline without an agency.',
+    problem: 'Showed how a small launch could ship a full campaign set on a tight timeline without a large agency.',
     created: 'Campaign system — anthem direction, 4 ad variants, landing section, social cutdowns',
     decision: 'One offer, one visual world, four hooks. No multi-message bloat.',
     outcome: 'Concept piece. Available on request.',
@@ -117,7 +117,7 @@ export default function SelectedWork() {
             num="02"
             kicker="Selected work"
             title={<>Four pieces. <span className="italic-accent">Honestly labelled.</span></>}
-            sub="The studio is early. Two are paid client projects. One is a concept commissioned for this site. One is internal. We mark which is which."
+            sub="Two are paid client projects. One is a concept commissioned for this site. One is internal. We mark which is which."
           />
         </FadeIn>
         <div className="flex flex-col">

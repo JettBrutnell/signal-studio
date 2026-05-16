@@ -59,7 +59,7 @@ export default function CtaFormSection() {
               Request a project<br /><span className="italic-accent">fit review.</span>
             </h2>
             <p className="mt-7 text-[18px] leading-[1.55] text-ink-2 max-w-[460px]">
-              Send through what you need built. I&apos;ll review the project, confirm whether it fits, and reply with a rough scope, timeline, and next step.
+              Send through what you need built. We&apos;ll review the project, confirm whether it fits, and reply with a rough scope, timeline, and next step.
             </p>
           </FadeIn>
 
@@ -68,7 +68,7 @@ export default function CtaFormSection() {
               {[
                 'Personal reply within one business day.',
                 'No discovery calls before scope is clear.',
-                "If it's not a fit, I will tell you and point you elsewhere.",
+                "If it's not a fit, we'll tell you and point you elsewhere.",
               ].map((line, i) => (
                 <div key={i} className="flex gap-3.5 items-baseline">
                   <span className="text-accent">&rarr;</span>
@@ -161,10 +161,10 @@ export default function CtaFormSection() {
                       }}
                     >
                       <option value="">Select&hellip;</option>
-                      <option>$500 – $1,500</option>
-                      <option>$1,500 – $3,000</option>
-                      <option>$3,000 – $6,000</option>
-                      <option>$6,000+</option>
+                      <option>$350 – $750</option>
+                      <option>$750 – $1,000</option>
+                      <option>$1,000 – $2,000</option>
+                      <option>$2,000+</option>
                       <option>Not sure yet</option>
                     </select>
                   </div>

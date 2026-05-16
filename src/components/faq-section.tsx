@@ -4,14 +4,14 @@ import { useState } from 'react'
 import FadeIn from './fade-in'
 
 const items = [
-  { q: 'Do you only work with established businesses?', a: "No. Most of my work is with early-stage founders, small DTC brands, and media buyers running modest-but-real budgets. If you have an offer and a goal, that's enough to start." },
-  { q: 'Can you work with media buyers?', a: "Yes — a good chunk of work is buyer-led. I deliver ad-set-ready files: named, labeled, ratio-organized. No back-and-forth on naming conventions." },
-  { q: 'Can you create ads and landing pages together?', a: "Yes, and I recommend it. Ads and pages perform better when one person owns the message match. The Campaign Launch Pack is built around this." },
+  { q: 'Do you only work with established businesses?', a: "No. Most of our work is with early-stage founders, small DTC brands, and media buyers running modest-but-real budgets. If you have an offer and a goal, that's enough to start." },
+  { q: 'Can you work with media buyers?', a: "Yes — a good chunk of our work is buyer-led. We deliver ad-set-ready files: named, labeled, ratio-organized. No back-and-forth on naming conventions." },
+  { q: 'Can you create ads and landing pages together?', a: "Yes, and we recommend it. Ads and pages perform better when one team owns the message match. The Campaign Launch Pack is built around this." },
   { q: 'How fast can a project be delivered?', a: "An Ad Creative Sprint typically ships in 7–10 working days. Landing Page Builds run 10–14 days. Campaign Launch Packs run 2–3 weeks. Rush options exist for an additional fee." },
   { q: 'Do you offer fixed-scope projects?', a: "Yes — everything on the Starting Points list is fixed-scope. The price doesn't move unless the scope does, and any scope change is agreed in writing before work continues." },
-  { q: 'Do you need performance data before starting?', a: "Helpful but not required. If you have it, I'll review it during the diagnose step. If you don't, we work from offer, audience, and intent instead." },
-  { q: 'What if I only need one landing page or a few ads?', a: "Perfect — that's most of what I do. Smaller scopes are welcome and priced accordingly." },
-  { q: 'What happens after I submit the form?', a: "You get a personal reply within one business day. The reply confirms whether the project is a fit, a rough scope, a timeline, and a next step. If it's not a fit, I'll say so." },
+  { q: 'Do you need performance data before starting?', a: "Helpful but not required. If you have it, we'll review it during the diagnose step. If you don't, we work from offer, audience, and intent instead." },
+  { q: 'What if I only need one landing page or a few ads?', a: "Perfect — that's a large part of what we do. Smaller scopes are welcome and priced accordingly." },
+  { q: 'What happens after I submit the form?', a: "You get a personal reply within one business day. The reply confirms whether the project is a fit, a rough scope, a timeline, and a next step. If it's not a fit, we'll say so." },
 ]
 
 export default function FaqSection() {

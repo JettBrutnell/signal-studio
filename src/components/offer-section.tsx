@@ -5,7 +5,7 @@ const offers = [
   {
     name: 'Ad Creative Sprint',
     who: 'For businesses or media buyers who need a fresh batch of campaign-ready ads.',
-    price: 'From $1,200',
+    price: 'From $350',
     time: '1–2 weeks',
     includes: ['Creative direction', 'Static ad concepts', 'Multiple ratios (9:16 · 1:1 · 4:5)', 'Hook and CTA variants'],
     featured: false,
@@ -13,18 +13,18 @@ const offers = [
   {
     name: 'Landing Page Build',
     who: 'For businesses sending paid traffic to a page that needs to convert better.',
-    price: 'From $1,800',
+    price: 'From $750',
     time: '2 weeks',
     includes: ['Page structure', 'Copy hierarchy', 'Figma or Framer design', 'CTA and form strategy'],
-    featured: true,
+    featured: false,
   },
   {
     name: 'Campaign Launch Pack',
     who: 'For businesses launching a new offer, product, or service.',
-    price: 'From $2,500',
+    price: 'From $1,000',
     time: '2–3 weeks',
     includes: ['Ad creative (ratios + variants)', 'Landing page direction', 'Campaign messaging', 'Visual system'],
-    featured: false,
+    featured: true,
   },
 ]
 
@@ -102,7 +102,7 @@ export default function OfferSection() {
 
         <FadeIn delay={300}>
           <p className="mt-9 text-sm text-ink-3 max-w-[720px] leading-[1.6]">
-            Projects are scoped based on deliverables, timeline, and asset count. Pricing reflects a fixed-scope engagement with two structured revision rounds. Custom work is available — get in touch with the brief and we&apos;ll quote it directly.
+            Projects are scoped based on deliverables, timeline, and asset count. Pricing reflects a fixed-scope engagement with two structured revision rounds. Custom scopes are available — send us the brief and we&apos;ll quote it directly.
           </p>
         </FadeIn>
       </div>
