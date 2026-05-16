@@ -3,72 +3,37 @@
 import { useState, type FormEvent } from 'react'
 import FadeIn from './fade-in'
 
-const serviceOptions = [
-  'Paid social ad creative',
-  'Landing page',
-  'Campaign assets',
-  'Creative testing system',
-  'Ongoing creative support',
-  'Full funnel creative',
-  'Creative audit',
-  'Not sure yet',
-]
-
-const budgetOptions = [
-  'Under £2k',
-  '£2k–£5k',
-  '£5k–£10k',
-  '£10k–£20k',
-  '£20k+',
-  'Ongoing retainer',
-  'Not sure yet',
-]
-
-interface FormData {
-  name: string
-  email: string
-  company: string
-  website: string
-  services: string[]
-  budget: string
-  goal: string
-  timeline: string
-  phone: string
-  notes: string
-}
-
 export default function CtaFormSection() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState<FormData>({
-    name: '', email: '', company: '', website: '',
-    services: [], budget: '', goal: '', timeline: '',
-    phone: '', notes: '',
+  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+  const [data, setData] = useState({
+    name: '', email: '', brand: '', site: '', need: '', timeline: '', budget: '', notes: '',
   })
 
-  function update(field: keyof FormData, value: string | string[]) {
-    setForm((prev) => ({ ...prev, [field]: value }))
-  }
+  function up(k: string, v: string) { setData(d => ({ ...d, [k]: v })) }
 
-  function toggleService(service: string) {
-    setForm((prev) => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service],
-    }))
-  }
-
-  async function handleSubmit(e: FormEvent) {
+  async function submit(e: FormEvent) {
     e.preventDefault()
     setStatus('submitting')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          company: data.brand,
+          website: data.site,
+          services: [data.need].filter(Boolean),
+          budget: data.budget,
+          goal: '',
+          timeline: data.timeline,
+          notes: data.notes,
+        }),
       })
       if (res.ok) {
-        setStatus('success')
+        setSubmitted(true)
+        setStatus('idle')
       } else {
         setStatus('error')
       }
@@ -77,158 +42,152 @@ export default function CtaFormSection() {
     }
   }
 
-  const inputClass =
-    'w-full px-4 py-3 rounded-xl border border-border bg-white text-sm transition-all duration-200 placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/40'
+  const fieldClass = 'bg-transparent border-0 border-b border-line-2 rounded-none px-0 py-3 text-ink text-base w-full outline-none focus:border-ink transition-colors placeholder:text-ink-4'
 
   return (
-    <section id="contact" className="relative py-24 lg:py-28 bg-foreground text-background overflow-hidden grain">
-      <div className="absolute inset-0 bg-dot-grid-dark pointer-events-none" />
-      <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-accent/6 rounded-full blur-[160px] pointer-events-none" />
-
-      <div className="relative max-w-4xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs uppercase tracking-[0.2em] text-background/35 mb-4">Get Started</p>
-        </FadeIn>
-        <FadeIn delay={80}>
-          <h2 className="text-3xl lg:text-4xl font-medium leading-tight tracking-tight">
-            Request a project fit review.
-          </h2>
-        </FadeIn>
-        <FadeIn delay={140}>
-          <p className="mt-3 text-background/50 text-[15px] max-w-xl leading-relaxed">
-            Tell us the goal, budget range, and timeline. We&apos;ll reply within 24 hours with fit,
-            rough scope, and next steps. If we&apos;re not the right fit, we&apos;ll say so.
-          </p>
-          <p className="mt-2 text-background/30 text-xs">Takes about 2 minutes.</p>
-        </FadeIn>
-
-        <FadeIn delay={200}>
-          {status === 'success' ? (
-            <div className="mt-10 bg-background/5 border border-background/10 rounded-2xl p-8 text-center">
-              <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-5">
-                <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-                  <path d="M4 10l5 5 7-10" stroke="#0a0a0a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-medium mb-2">Submission received.</h3>
-              <p className="text-sm text-background/50">
-                We&apos;ll review your details and get back to you within 24 hours with fit, scope, and next steps.
-              </p>
+    <section id="form" className="py-36 border-t border-line bg-paper-2">
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] grid lg:grid-cols-[1fr_1.1fr] gap-20 items-start">
+        {/* Left — copy */}
+        <div>
+          <FadeIn>
+            <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.10em] uppercase text-ink-3 mb-6">
+              <span className="text-accent">07</span>
+              <span className="w-6 h-px bg-ink-2" />
+              <span>Next step</span>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="mt-10 space-y-5">
-              {/* Row 1: Name + Email */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-xs font-medium text-background/60 mb-1.5">Name *</label>
-                  <input type="text" id="name" required value={form.name} onChange={(e) => update('name', e.target.value)} className={inputClass} placeholder="Your name" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-xs font-medium text-background/60 mb-1.5">Work email *</label>
-                  <input type="email" id="email" required value={form.email} onChange={(e) => update('email', e.target.value)} className={inputClass} placeholder="you@company.com" />
-                </div>
-              </div>
+            <h2 className="display m-0 text-[clamp(48px,5.6vw,84px)]">
+              Request a project<br /><span className="italic-accent">fit review.</span>
+            </h2>
+            <p className="mt-7 text-[18px] leading-[1.55] text-ink-2 max-w-[460px]">
+              Send through what you need built. I&apos;ll review the project, confirm whether it fits, and reply with a rough scope, timeline, and next step.
+            </p>
+          </FadeIn>
 
-              {/* Row 2: Company + Website */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="company" className="block text-xs font-medium text-background/60 mb-1.5">Company / brand *</label>
-                  <input type="text" id="company" required value={form.company} onChange={(e) => update('company', e.target.value)} className={inputClass} placeholder="Company name" />
+          <FadeIn delay={100}>
+            <div className="mt-10 flex flex-col gap-3.5">
+              {[
+                'Personal reply within one business day.',
+                'No discovery calls before scope is clear.',
+                "If it's not a fit, I will tell you and point you elsewhere.",
+              ].map((line, i) => (
+                <div key={i} className="flex gap-3.5 items-baseline">
+                  <span className="text-accent">&rarr;</span>
+                  <span className="text-[15px] text-ink">{line}</span>
                 </div>
-                <div>
-                  <label htmlFor="website" className="block text-xs font-medium text-background/60 mb-1.5">Website or landing page URL <span className="text-background/30">(optional)</span></label>
-                  <input type="url" id="website" value={form.website} onChange={(e) => update('website', e.target.value)} className={inputClass} placeholder="https://" />
-                </div>
-              </div>
+              ))}
+            </div>
+          </FadeIn>
 
-              {/* Services — checkboxes */}
-              <div>
-                <label className="block text-xs font-medium text-background/60 mb-2">What do you need? *</label>
-                <div className="flex flex-wrap gap-2">
-                  {serviceOptions.map((service) => (
-                    <button
-                      key={service}
-                      type="button"
-                      onClick={() => toggleService(service)}
-                      className={`text-xs px-3.5 py-2 rounded-full border transition-all duration-200 ${
-                        form.services.includes(service)
-                          ? 'bg-accent text-accent-foreground border-accent font-medium'
-                          : 'bg-transparent text-background/50 border-background/15 hover:border-background/30'
-                      }`}
-                    >
-                      {service}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <FadeIn delay={200}>
+            <div className="mt-12 pt-7 border-t border-line">
+              <div className="mono mb-2">Prefer email</div>
+              <a href="mailto:hello@signalstudio.work" className="font-serif text-[30px] text-ink tracking-tight">
+                hello@signalstudio.work &rarr;
+              </a>
+            </div>
+          </FadeIn>
+        </div>
 
-              {/* Budget */}
-              <div>
-                <label htmlFor="budget" className="block text-xs font-medium text-background/60 mb-1.5">
-                  Budget range *
-                  <span className="font-normal text-background/30 ml-1">Helps us recommend the right level of support.</span>
-                </label>
-                <select
-                  id="budget"
-                  required
-                  value={form.budget}
-                  onChange={(e) => update('budget', e.target.value)}
-                  className={`${inputClass} ${!form.budget ? 'text-muted-foreground/40' : 'text-foreground'}`}
+        {/* Right — form */}
+        <FadeIn delay={120}>
+          <div className="bg-paper border border-line rounded-xl p-10">
+            {submitted ? (
+              <div className="py-16 px-5 text-center">
+                <div className="w-14 h-14 mx-auto rounded-full bg-ink text-paper grid place-items-center text-[26px]">&#10003;</div>
+                <h3 className="display mt-6 text-4xl">Got it.</h3>
+                <p className="mt-3 text-ink-2 text-[15px] leading-relaxed max-w-[380px] mx-auto">
+                  You&apos;ll hear back within one business day — a real reply, not an auto-responder.
+                </p>
+                <button
+                  onClick={() => { setSubmitted(false); setData({ name: '', email: '', brand: '', site: '', need: '', timeline: '', budget: '', notes: '' }) }}
+                  className="mt-7 inline-flex items-center gap-2 text-ink border border-ink px-5 py-3 rounded-full text-sm font-medium hover:bg-ink hover:text-paper transition-all cursor-pointer bg-transparent"
                 >
-                  <option value="" disabled>Select a range</option>
-                  {budgetOptions.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
+                  Submit another
+                </button>
               </div>
-
-              {/* Row: Goal + Timeline */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="goal" className="block text-xs font-medium text-background/60 mb-1.5">Primary goal or KPI <span className="text-background/30">(optional)</span></label>
-                  <input type="text" id="goal" value={form.goal} onChange={(e) => update('goal', e.target.value)} className={inputClass} placeholder="e.g. reduce CPL, increase ROAS" />
+            ) : (
+              <form onSubmit={submit} className="flex flex-col gap-6">
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Your name</label>
+                  <input className={fieldClass} value={data.name} onChange={e => up('name', e.target.value)} placeholder="Full name" required />
                 </div>
-                <div>
-                  <label htmlFor="timeline" className="block text-xs font-medium text-background/60 mb-1.5">Timeline / launch date <span className="text-background/30">(optional)</span></label>
-                  <input type="text" id="timeline" value={form.timeline} onChange={(e) => update('timeline', e.target.value)} className={inputClass} placeholder="e.g. need assets by June 1" />
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Email</label>
+                  <input type="email" className={fieldClass} value={data.email} onChange={e => up('email', e.target.value)} placeholder="you@email.com" required />
                 </div>
-              </div>
+                <div className="grid grid-cols-2 gap-[22px]">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Business / brand</label>
+                    <input className={fieldClass} value={data.brand} onChange={e => up('brand', e.target.value)} placeholder="Brand name" required />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Website or Instagram</label>
+                    <input className={fieldClass} value={data.site} onChange={e => up('site', e.target.value)} placeholder="link or @handle" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">What do you need?</label>
+                  <select
+                    className={`${fieldClass} appearance-none cursor-pointer`}
+                    value={data.need} onChange={e => up('need', e.target.value)} required
+                    style={{
+                      backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23444' d='M0 0h10L5 6z'/></svg>\")",
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 4px center',
+                    }}
+                  >
+                    <option value="">Select one&hellip;</option>
+                    <option>Ad Creative Sprint</option>
+                    <option>Landing Page Build</option>
+                    <option>Campaign Launch Pack</option>
+                    <option>Custom scope</option>
+                    <option>Not sure — help me figure it out</option>
+                  </select>
+                </div>
+                <div className="grid grid-cols-2 gap-[22px]">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Timeline</label>
+                    <input className={fieldClass} value={data.timeline} onChange={e => up('timeline', e.target.value)} placeholder="e.g. 3 weeks, Q3" />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Budget range</label>
+                    <select
+                      className={`${fieldClass} appearance-none cursor-pointer`}
+                      value={data.budget} onChange={e => up('budget', e.target.value)}
+                      style={{
+                        backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23444' d='M0 0h10L5 6z'/></svg>\")",
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'right 4px center',
+                      }}
+                    >
+                      <option value="">Select&hellip;</option>
+                      <option>$500 – $1,500</option>
+                      <option>$1,500 – $3,000</option>
+                      <option>$3,000 – $6,000</option>
+                      <option>$6,000+</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Project notes</label>
+                  <textarea className={`${fieldClass} resize-none`} rows={3} value={data.notes} onChange={e => up('notes', e.target.value)} placeholder="What are you trying to launch, fix, or improve?" />
+                </div>
 
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-xs font-medium text-background/60 mb-1.5">Phone <span className="text-background/30">(optional)</span></label>
-                <input type="tel" id="phone" value={form.phone} onChange={(e) => update('phone', e.target.value)} className={inputClass} placeholder="Phone number" />
-              </div>
+                {status === 'error' && (
+                  <p className="text-sm text-red-600">Something went wrong. Please try again or email directly.</p>
+                )}
 
-              {/* Notes */}
-              <div>
-                <label htmlFor="notes" className="block text-xs font-medium text-background/60 mb-1.5">Project notes <span className="text-background/30">(optional)</span></label>
-                <textarea id="notes" rows={3} value={form.notes} onChange={(e) => update('notes', e.target.value)} className={`${inputClass} resize-none`} placeholder="Any context that would help us understand the project..." />
-              </div>
-
-              {status === 'error' && (
-                <p className="text-sm text-red-400">Something went wrong. Please try again or email us directly.</p>
-              )}
-
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="bg-accent text-accent-foreground font-medium px-7 py-3.5 rounded-full text-sm hover:shadow-[0_0_30px_rgba(200,255,0,0.2)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="mt-2 bg-ink text-paper font-medium py-4 rounded-full text-[15px] hover:bg-accent hover:-translate-y-px transition-all cursor-pointer border-0 disabled:opacity-50"
                 >
-                  {status === 'submitting' ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-20" /><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
-                      Sending...
-                    </>
-                  ) : (
-                    'Submit Fit Review Request'
-                  )}
+                  {status === 'submitting' ? 'Sending…' : 'Send fit review request →'}
                 </button>
-                <p className="text-xs text-background/30">No pressure. If it&apos;s not a fit, we&apos;ll say so.</p>
-              </div>
-            </form>
-          )}
+              </form>
+            )}
+          </div>
         </FadeIn>
       </div>
     </section>

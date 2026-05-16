@@ -3,92 +3,74 @@
 import { useState } from 'react'
 import FadeIn from './fade-in'
 
-const faqs = [
-  {
-    q: 'What does this usually cost?',
-    a: 'Projects typically range from £1,500–£8,000 depending on scope. A landing page with ad creative starts around £3,000. We will give you a clear quote after the project fit review — no surprises, no hidden fees.',
-  },
-  {
-    q: 'How long does a project take?',
-    a: 'Most projects are delivered within 10–14 working days from brief sign-off. Rush delivery (5–7 days) is available for an additional fee. We will confirm the timeline before any work begins.',
-  },
-  {
-    q: 'Do you work with media buyers and agencies?',
-    a: 'Yes. A significant portion of our work is commissioned by media buyers and agencies who need reliable, performance-focused creative production. We understand campaign workflows, testing frameworks, and platform specs.',
-  },
-  {
-    q: 'Can you work from an existing brief or brand guidelines?',
-    a: 'Absolutely. If you have a brief, brand guidelines, or creative direction, we will work from that. If you do not, we will help you build one during the strategic direction phase.',
-  },
-  {
-    q: 'Do you offer ongoing creative support?',
-    a: 'Yes. We offer monthly creative support packages for teams that need consistent output. This includes priority access, strategy calls, and iterative campaign support.',
-  },
-  {
-    q: 'How many revisions are included?',
-    a: 'Two rounds of revisions are included in every project. Most projects ship after one round. Additional rounds are billed at a pre-agreed hourly rate.',
-  },
-  {
-    q: 'Can you provide performance data from previous work?',
-    a: 'We share anonymised performance data where clients have given permission. The case studies on this page include real results. We can also help interpret your own data to inform creative decisions.',
-  },
-  {
-    q: 'What happens after I submit the form?',
-    a: 'We review your submission and reply within 24 hours with one of three things: a fit confirmation with rough scope and timeline, follow-up questions to clarify the brief, or an honest assessment that we are not the right fit — with a referral if we can.',
-  },
-  {
-    q: 'What if we are not a good fit?',
-    a: 'We will tell you. No sales pressure, no follow-up sequences. If your project is not in our wheelhouse — wrong budget, wrong timeline, wrong type of work — we will say so and point you toward someone who can help.',
-  },
+const items = [
+  { q: 'Do you only work with established businesses?', a: "No. Most of my work is with early-stage founders, small DTC brands, and media buyers running modest-but-real budgets. If you have an offer and a goal, that's enough to start." },
+  { q: 'Can you work with media buyers?', a: "Yes — a good chunk of work is buyer-led. I deliver ad-set-ready files: named, labeled, ratio-organized. No back-and-forth on naming conventions." },
+  { q: 'Can you create ads and landing pages together?', a: "Yes, and I recommend it. Ads and pages perform better when one person owns the message match. The Campaign Launch Pack is built around this." },
+  { q: 'How fast can a project be delivered?', a: "An Ad Creative Sprint typically ships in 7–10 working days. Landing Page Builds run 10–14 days. Campaign Launch Packs run 2–3 weeks. Rush options exist for an additional fee." },
+  { q: 'Do you offer fixed-scope projects?', a: "Yes — everything on the Starting Points list is fixed-scope. The price doesn't move unless the scope does, and any scope change is agreed in writing before work continues." },
+  { q: 'Do you need performance data before starting?', a: "Helpful but not required. If you have it, I'll review it during the diagnose step. If you don't, we work from offer, audience, and intent instead." },
+  { q: 'What if I only need one landing page or a few ads?', a: "Perfect — that's most of what I do. Smaller scopes are welcome and priced accordingly." },
+  { q: 'What happens after I submit the form?', a: "You get a personal reply within one business day. The reply confirms whether the project is a fit, a rough scope, a timeline, and a next step. If it's not a fit, I'll say so." },
 ]
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false)
-
-  return (
-    <div className="border border-border rounded-xl overflow-hidden card-hover">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full px-5 py-4 flex items-center justify-between text-left gap-4"
-      >
-        <span className="text-sm font-medium">{q}</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          className={`shrink-0 text-muted-foreground transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
-        >
-          <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-      </button>
-      <div
-        className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: open ? '300px' : '0', opacity: open ? 1 : 0 }}
-      >
-        <p className="px-5 pb-4 text-sm text-muted-foreground leading-relaxed">{a}</p>
-      </div>
-    </div>
-  )
-}
-
 export default function FaqSection() {
-  return (
-    <section id="faq" className="py-24 lg:py-28 border-t border-border">
-      <div className="max-w-3xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">FAQ</p>
-        </FadeIn>
-        <FadeIn delay={80}>
-          <h2 className="text-3xl lg:text-4xl font-medium leading-tight tracking-tight">
-            Common questions before reaching out.
-          </h2>
-        </FadeIn>
+  const [open, setOpen] = useState(0)
 
-        <div className="mt-10 space-y-2">
-          {faqs.map((faq, i) => (
-            <FadeIn key={i} delay={140 + i * 40}>
-              <FaqItem q={faq.q} a={faq.a} />
+  return (
+    <section id="faq" className="py-28 border-t border-line">
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] grid lg:grid-cols-[1fr_1.5fr] gap-20 items-start">
+        {/* Left — sticky heading */}
+        <div className="lg:sticky lg:top-[100px]">
+          <FadeIn>
+            <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.10em] uppercase text-ink-3 mb-[18px]">
+              <span className="text-accent">06</span>
+              <span className="w-6 h-px bg-ink-2" />
+              <span>FAQ</span>
+            </div>
+            <h2 className="display m-0 text-[clamp(36px,4.4vw,60px)] max-w-[820px]">
+              The questions that <span className="italic-accent">stop the form.</span>
+            </h2>
+            <p className="mt-6 text-ink-2 text-base leading-[1.55] max-w-[380px]">
+              If yours isn&apos;t here, write it into the project note when you submit — I&apos;ll address it in the reply.
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* Right — accordion */}
+        <div>
+          {items.map((it, i) => (
+            <FadeIn key={i} delay={i * 40}>
+              <div className={`border-b border-line ${i === 0 ? 'border-t' : ''}`}>
+                <button
+                  onClick={() => setOpen(open === i ? -1 : i)}
+                  className="w-full flex justify-between items-center gap-5 py-6 text-left text-ink text-[19px] font-normal cursor-pointer bg-transparent border-0"
+                  style={{ fontFamily: 'var(--font-sans)' }}
+                >
+                  <span className="flex gap-[18px] items-baseline">
+                    <span className="mono text-ink-4">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{it.q}</span>
+                  </span>
+                  <span
+                    className="w-[26px] h-[26px] rounded-full border flex-shrink-0 grid place-items-center text-sm transition-all"
+                    style={{
+                      borderColor: open === i ? 'var(--color-ink)' : 'var(--color-line-2)',
+                      color: open === i ? 'var(--color-paper)' : 'var(--color-ink-2)',
+                      background: open === i ? 'var(--color-ink)' : 'transparent',
+                    }}
+                  >
+                    {open === i ? '−' : '+'}
+                  </span>
+                </button>
+                <div
+                  className="overflow-hidden transition-all duration-300"
+                  style={{ maxHeight: open === i ? 300 : 0, opacity: open === i ? 1 : 0 }}
+                >
+                  <div className="pb-7 px-12 text-ink-2 text-base leading-[1.65]">
+                    {it.a}
+                  </div>
+                </div>
+              </div>
             </FadeIn>
           ))}
         </div>

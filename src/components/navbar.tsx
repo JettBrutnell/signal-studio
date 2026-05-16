@@ -1,60 +1,87 @@
 'use client'
 
-import { useState } from 'react'
-
-const navItems = [
-  { label: 'Work', href: '#work' },
-  { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'FAQ', href: '#faq' },
-]
+import { useState, useEffect } from 'react'
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 30)
+    window.addEventListener('scroll', handler, { passive: true })
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <nav className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-1.5 shrink-0">
-          <span className="w-2 h-2 rounded-full bg-accent" />
-          <span className="font-medium text-sm">Signal</span>
-          <span className="text-muted-foreground text-sm">/studio</span>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled ? 'bg-paper/85 backdrop-blur-[14px] backdrop-saturate-[1.4] border-b border-line' : ''
+      }`}
+    >
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] flex items-center gap-6 py-[18px]">
+        {/* Logo */}
+        <a href="#top" className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-full bg-ink relative">
+            <div className="absolute inset-2 rounded-full bg-accent" />
+          </div>
+          <div className="font-serif text-lg tracking-tight text-ink">
+            Signal <i className="text-ink-3">Studio</i>
+          </div>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-7 text-[13px]">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <a href={item.href} className="text-muted-foreground hover:text-foreground transition-colors">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="#contact"
-          className="hidden lg:inline-flex items-center gap-2 bg-foreground text-background text-[13px] font-medium px-4 py-2 rounded-full hover:bg-foreground/90 transition"
-        >
-          Request a Fit Review
-        </a>
-
-        <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            {open ? <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
-          </svg>
-        </button>
-      </nav>
-
-      {open && (
-        <div className="lg:hidden border-t border-border px-6 py-4 bg-background space-y-2">
-          {navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block py-1.5 text-sm text-muted-foreground">
-              {item.label}
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-[26px] ml-auto">
+          {[
+            ['What we do', '#what'],
+            ['Selected work', '#work'],
+            ['Process', '#process'],
+            ['Starting points', '#offer'],
+            ['FAQ', '#faq'],
+          ].map(([label, href]) => (
+            <a key={href} href={href} className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">
+              {label}
             </a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="inline-flex mt-2 bg-foreground text-background text-sm font-medium px-4 py-2 rounded-full">
-            Request a Fit Review
+        </nav>
+
+        {/* Desktop CTA */}
+        <a
+          href="#form"
+          className="hidden md:inline-flex items-center gap-2.5 bg-ink text-paper text-sm font-medium px-[22px] py-[13px] rounded-full hover:bg-accent hover:-translate-y-px transition-all whitespace-nowrap"
+        >
+          Request fit review <span className="inline-block transition-transform group-hover:translate-x-0.5">&rarr;</span>
+        </a>
+
+        {/* Mobile toggle */}
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden ml-auto p-2" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            {mobileOpen ? (
+              <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
+            ) : (
+              <path d="M4 8h16M4 16h16" strokeLinecap="round" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-line px-[clamp(24px,5vw,64px)] py-5 bg-paper">
+          <nav className="flex flex-col gap-3 text-sm">
+            {[
+              ['What we do', '#what'],
+              ['Selected work', '#work'],
+              ['Process', '#process'],
+              ['Starting points', '#offer'],
+              ['FAQ', '#faq'],
+            ].map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setMobileOpen(false)} className="text-ink-2">
+                {label}
+              </a>
+            ))}
+          </nav>
+          <a href="#form" onClick={() => setMobileOpen(false)} className="mt-4 inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-5 py-3 rounded-full">
+            Request fit review &rarr;
           </a>
         </div>
       )}

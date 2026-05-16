@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -8,17 +8,22 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  style: ["italic"],
-  weight: ["400", "500", "600"],
+});
+
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Signal Studio — Websites and ads built to turn attention into booked enquiries",
+  title: "Signal Studio — Conversion-focused creative for ads, landing pages, and campaign launches",
   description:
-    "Signal helps appointment-based businesses sharpen their online presence with conversion-first landing pages, websites, and static ad creative.",
+    "Signal Studio helps businesses and media buyers turn offers, campaigns, and ideas into polished creative built for clarity, speed, and conversion.",
 };
 
 export default function RootLayout({
@@ -27,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${playfair.variable} antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

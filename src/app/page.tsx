@@ -1,13 +1,10 @@
 import Navbar from '@/components/navbar'
 import HeroSection from '@/components/hero-section'
-import ProofStrip from '@/components/proof-strip'
-import FeaturedOutcomes from '@/components/featured-outcomes'
-import PortfolioGrid from '@/components/portfolio-grid'
-import CaseStudies from '@/components/case-studies'
 import ServicesSection from '@/components/services-section'
-import PaidMediaSection from '@/components/paid-media-section'
+import SelectedWork from '@/components/selected-work'
 import ProcessSection from '@/components/process-section'
-import TrustSection from '@/components/trust-section'
+import WhySection from '@/components/why-section'
+import OfferSection from '@/components/offer-section'
 import FaqSection from '@/components/faq-section'
 import CtaFormSection from '@/components/cta-form-section'
 import Footer from '@/components/footer'
@@ -18,14 +15,11 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <ProofStrip />
-        <FeaturedOutcomes />
-        <PortfolioGrid />
-        <CaseStudies />
         <ServicesSection />
-        <PaidMediaSection />
+        <SelectedWork />
         <ProcessSection />
-        <TrustSection />
+        <WhySection />
+        <OfferSection />
         <FaqSection />
         <CtaFormSection />
       </main>

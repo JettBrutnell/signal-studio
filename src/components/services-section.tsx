@@ -1,85 +1,77 @@
 import FadeIn from './fade-in'
+import SectionHead from './section-head'
+import { MiniAd, MiniLP } from './mock-visuals'
 
-const services = [
+const cards = [
   {
-    title: 'Paid Social Ad Creative',
-    who: 'Media buyers and growth teams running Meta, TikTok, or LinkedIn campaigns.',
-    problem: 'Creative fatigue, declining CTR, and rising CPL from stale or generic ad assets.',
-    deliverables: 'Static ads, motion graphics, UGC-style assets, variant sets across multiple aspect ratios.',
-    outcome: 'Lower CPL, higher CTR, faster testing cycles, longer creative lifespan.',
+    n: '01',
+    title: 'Paid Social Creative',
+    desc: 'Static and motion-ready ad concepts built around hooks, offer clarity, safe zones, and platform-ready layouts.',
+    deliv: ['Meta ad creatives', 'Story, square, and landscape formats', 'Hook and CTA variants', 'Campaign concept directions'],
+    visual: <MiniAd ratio="4/5" headline="Hook · 6s read" sub="Pain → product" brand="STUDIO" cta="See more" label="1:1" />,
   },
   {
-    title: 'Landing Pages for Paid Traffic',
-    who: 'DTC brands, lead gen businesses, and agencies sending paid traffic to dedicated pages.',
-    problem: 'Low conversion rates from sending ad traffic to a generic website instead of a focused landing page.',
-    deliverables: 'Full landing page design and build, A/B headline variants, mobile-optimised layouts, form integration.',
-    outcome: 'Higher conversion rate, lower bounce, better ROAS from existing ad spend.',
+    n: '02',
+    title: 'Landing Pages',
+    desc: 'Clean landing pages built to explain the offer, build trust, handle objections, and drive enquiries.',
+    deliv: ['Landing page structure', 'Copy hierarchy', 'Framer or Figma designs', 'CTA and form strategy'],
+    visual: <MiniLP headline="A page that earns its click." sub="Built for the campaign, not the brand site." cta="Continue" />,
   },
   {
-    title: 'Campaign Creative Systems',
-    who: 'Teams running ongoing acquisition who need consistent, scalable creative output.',
-    problem: 'Inconsistent creative quality, slow iteration speed, and no structured testing framework.',
-    deliverables: 'Brand system, template library, variant frameworks, testing protocols, asset management.',
-    outcome: 'Faster campaign launches, consistent performance, reduced per-asset creative cost.',
-  },
-  {
-    title: 'Creative Audits',
-    who: 'Brands with underperforming campaigns who need a diagnostic before committing to a full project.',
-    problem: 'Unclear why campaigns are underperforming — could be the ad, the page, the funnel, or the offer.',
-    deliverables: 'Page audit, ad creative audit, competitor analysis, prioritised action list.',
-    outcome: 'Clear diagnosis of conversion blockers with specific, actionable recommendations.',
-  },
-  {
-    title: 'Ongoing Creative Support',
-    who: 'Teams that need reliable monthly creative capacity without hiring in-house.',
-    problem: 'Freelancer inconsistency, agency overhead, and gaps between campaign cycles.',
-    deliverables: 'Monthly creative hours, priority access, strategy calls, iterative campaign support.',
-    outcome: 'Consistent output, campaign continuity, no hiring overhead.',
+    n: '03',
+    title: 'Campaign Asset Systems',
+    desc: 'Launch-ready creative sets that keep ads, landing pages, and campaign messaging consistent.',
+    deliv: ['Ad sets across ratios', 'Landing page sections', 'Visual direction', 'Campaign messaging', 'Creative variants'],
+    visual: (
+      <div className="relative h-full grid grid-cols-2 gap-2 p-1">
+        <MiniAd ratio="9/16" brand="BRAND" cta="Shop" />
+        <div className="flex flex-col gap-2">
+          <MiniAd ratio="1/1" brand="BRAND" cta="Shop" />
+          <div className="placeholder-img flex-1 text-[9px]">LP / hero</div>
+        </div>
+      </div>
+    ),
   },
 ]
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 lg:py-28 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="what" className="py-28 border-t border-line">
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Services</p>
-        </FadeIn>
-        <FadeIn delay={80}>
-          <h2 className="text-3xl lg:text-4xl font-medium leading-tight tracking-tight max-w-xl">
-            What we build, who it&apos;s for, and what it does for your business.
-          </h2>
+          <SectionHead
+            num="01"
+            kicker="What we do"
+            title={<>Three things, <span className="italic-accent">done well.</span></>}
+            sub="Signal Studio doesn't do brand systems, logos, or websites for the trophy shelf. Three engagements, scoped tightly."
+          />
         </FadeIn>
 
-        <div className="mt-12 space-y-4">
-          {services.map((service, i) => (
-            <FadeIn key={i} delay={160 + i * 80}>
-              <div className="border border-border rounded-2xl p-6 lg:p-8 card-hover group">
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                  {/* Left — title and who */}
-                  <div className="lg:w-1/3 shrink-0">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-6 h-6 rounded-full bg-accent/15 flex items-center justify-center text-[10px] font-semibold text-foreground">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-lg font-medium">{service.title}</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{service.who}</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {cards.map((c, i) => (
+            <FadeIn key={c.n} delay={i * 100}>
+              <div className="bg-paper border border-line rounded-xl overflow-hidden flex flex-col h-full">
+                {/* Visual area */}
+                <div className="aspect-[4/3] border-b border-line bg-paper-2 relative overflow-hidden">
+                  <div className="absolute inset-5 flex items-center justify-center">
+                    <div className="w-[70%] max-h-full">{c.visual}</div>
                   </div>
-
-                  {/* Right — problem, deliverables, outcome */}
-                  <div className="flex-1 grid sm:grid-cols-3 gap-4">
-                    <div>
-                      <h4 className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-1.5">Problem</h4>
-                      <p className="text-sm text-foreground leading-relaxed">{service.problem}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-1.5">Deliverables</h4>
-                      <p className="text-sm text-foreground leading-relaxed">{service.deliverables}</p>
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-1.5">Outcome</h4>
-                      <p className="text-sm text-foreground leading-relaxed">{service.outcome}</p>
+                </div>
+                {/* Content */}
+                <div className="p-6 lg:p-7 flex-1 flex flex-col">
+                  <div className="mono text-accent">{c.n}</div>
+                  <h3 className="mt-3 mb-2.5 font-serif text-[30px] leading-[1.05] tracking-tight">{c.title}</h3>
+                  <p className="text-[14.5px] leading-[1.55] text-ink-2">{c.desc}</p>
+                  <div className="mt-auto pt-5">
+                    <div className="pt-[18px] border-t border-dashed border-line">
+                      <div className="mono mb-2.5">Deliverables</div>
+                      <ul className="flex flex-col gap-1.5 list-none p-0 m-0">
+                        {c.deliv.map(d => (
+                          <li key={d} className="text-[13px] text-ink-2 flex gap-2">
+                            <span className="text-ink-4">&middot;</span>{d}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>

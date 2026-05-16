@@ -1,117 +1,51 @@
 import FadeIn from './fade-in'
+import SectionHead from './section-head'
 
 const steps = [
-  {
-    day: 'Day 1',
-    title: 'Brief Intake',
-    description: 'You share the goal, audience, budget range, and timeline. We confirm fit and define scope.',
-    detail: 'You provide: brand assets, existing ads, target audience notes, and any performance data you have.',
-  },
-  {
-    day: 'Day 2–3',
-    title: 'Strategic Direction',
-    description: 'We review your current assets, competitors, and positioning. We propose a creative direction with rationale.',
-    detail: 'You receive: a written brief-back with our recommended approach, angles, and reference examples.',
-  },
-  {
-    day: 'Day 3–5',
-    title: 'Concepting',
-    description: 'We present 2–3 concept directions. You choose one, or we refine based on feedback.',
-    detail: 'Concepts include: layout, headline direction, visual treatment, and CTA approach.',
-  },
-  {
-    day: 'Day 5–8',
-    title: 'Production',
-    description: 'We build final assets. Ads, landing pages, variants — whatever the scope covers.',
-    detail: 'All assets built to platform spec. Multi-format exports included.',
-  },
-  {
-    day: 'Day 8–10',
-    title: 'Revisions',
-    description: 'Two rounds of revisions included in every project. Feedback via Loom, email, or markup.',
-    detail: 'Additional rounds available at an hourly rate. Most projects need one round or fewer.',
-  },
-  {
-    day: 'Day 10–12',
-    title: 'Delivery',
-    description: 'Final files delivered in production-ready formats. Platform-specific exports included.',
-    detail: 'You receive: organised file package, copy doc, and implementation notes.',
-  },
-  {
-    day: 'Ongoing',
-    title: 'Testing Support',
-    description: 'Optional: we review performance data and recommend creative iterations based on what the numbers show.',
-    detail: 'Available as a one-off review or as part of an ongoing creative support arrangement.',
-  },
+  { n: '01', t: 'Diagnose', body: "We identify the offer, audience, campaign goal, and current friction points. A short call and an async questionnaire — no long discovery phase." },
+  { n: '02', t: 'Structure', body: "We map the page, ad, or campaign asset around the single action the viewer needs to take. Structure first, design second." },
+  { n: '03', t: 'Design', body: "We create clean, conversion-focused creative with hierarchy, contrast, and platform constraints handled. You see work, not deliverables theatre." },
+  { n: '04', t: 'Refine', body: "We tighten the copy, layout, and visual system based on feedback. Two structured rounds — focused, not endless." },
+  { n: '05', t: 'Deliver', body: "You receive final assets, source files where relevant, and clear handoff notes. Named and organized for your media or dev team." },
 ]
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="py-24 lg:py-28 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16">
-          {/* Left — sticky intro */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <FadeIn>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Process</p>
-              <h2 className="text-3xl lg:text-4xl font-medium leading-tight tracking-tight">
-                How the work gets done.
-              </h2>
-              <p className="mt-4 text-muted-foreground text-[15px] leading-relaxed">
-                Clear steps, predictable timelines, direct communication. No black boxes, no scope creep, no surprises.
-              </p>
-            </FadeIn>
+    <section id="process" className="py-28 border-t border-line">
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
+        <FadeIn>
+          <SectionHead
+            num="03"
+            kicker="How the work gets done"
+            title={<>A short, <span className="italic-accent">honest</span> process.</>}
+            sub="Five steps. Most projects move through them in two to three weeks. No account managers, no kickoff theatre."
+          />
+        </FadeIn>
 
-            <FadeIn delay={100}>
-              <div className="mt-6 space-y-3">
-                <div className="flex items-center gap-3 text-sm">
-                  <span className="w-8 h-8 rounded-lg bg-muted border border-border flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M8 4v4l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  </span>
-                  <span><span className="font-medium">Typical delivery:</span> 10–14 working days</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <span className="w-8 h-8 rounded-lg bg-muted border border-border flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8l3 3 5-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/></svg>
-                  </span>
-                  <span><span className="font-medium">Revisions:</span> 2 rounds included</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <span className="w-8 h-8 rounded-lg bg-muted border border-border flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4.5l6 4 6-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/></svg>
-                  </span>
-                  <span><span className="font-medium">Communication:</span> email + Loom, no meetings unless needed</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <span className="w-8 h-8 rounded-lg bg-muted border border-border flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/></svg>
-                  </span>
-                  <span><span className="font-medium">Who leads:</span> founder-led, 1:1 throughout</span>
-                </div>
+        {/* Steps */}
+        <div>
+          {steps.map((s, i) => (
+            <FadeIn key={s.n} delay={i * 60}>
+              <div className={`grid grid-cols-[60px_1fr] lg:grid-cols-[80px_280px_1fr] gap-5 lg:gap-10 py-8 border-t border-line items-baseline ${i === steps.length - 1 ? 'border-b border-b-line' : ''}`}>
+                <div className="font-serif text-5xl text-accent leading-none tracking-tighter">{s.n}</div>
+                <h3 className="m-0 font-serif text-4xl tracking-tight leading-none">{s.t}</h3>
+                <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 lg:col-span-1">{s.body}</p>
               </div>
             </FadeIn>
-          </div>
-
-          {/* Right — timeline */}
-          <div className="space-y-3">
-            {steps.map((step, i) => (
-              <FadeIn key={i} delay={100 + i * 60}>
-                <div className="border border-border rounded-xl p-5 lg:p-6 card-hover group">
-                  <div className="flex items-start gap-4">
-                    <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-1 rounded-full shrink-0 mt-0.5">
-                      {step.day}
-                    </span>
-                    <div className="flex-1">
-                      <h3 className="text-base font-medium mb-1">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-                      <p className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{step.detail}</p>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          ))}
         </div>
+
+        {/* Direct-contact note */}
+        <FadeIn delay={300}>
+          <div className="mt-10 p-6 lg:px-7 bg-paper-2 rounded-xl border border-line flex gap-[18px] items-center">
+            <div className="flex-1 text-[15px] text-ink leading-[1.55]">
+              You work directly with the person making the creative.{' '}
+              <span className="text-ink-3">
+                No account manager layer. No bloated process. One email thread, one Loom feed.
+              </span>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )
