@@ -21,11 +21,11 @@ export default function Navbar() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] flex items-center gap-6 py-[18px]">
         {/* Logo */}
         <a href="#top" className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-full bg-ink relative">
-            <div className="absolute inset-2 rounded-full bg-accent" />
+          <div className="w-7 h-7 rounded-full bg-accent relative">
+            <div className="absolute inset-2 rounded-full bg-paper" />
           </div>
           <div className="font-serif text-lg tracking-tight text-ink">
-            Signal <i className="text-ink-3">Studio</i>
+            Clear <i className="text-ink-3">Motive</i>
           </div>
         </a>
 

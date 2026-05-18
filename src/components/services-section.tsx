@@ -43,7 +43,7 @@ export default function ServicesSection() {
             num="01"
             kicker="What we do"
             title={<>Three things, <span className="italic-accent">done well.</span></>}
-            sub="We don't do brand systems, logos, or websites for the trophy shelf. Three engagement types, scoped tightly."
+            sub="We don't do brand systems, logos, or trophy-shelf websites. Three engagement types, scoped tightly."
           />
         </FadeIn>
 

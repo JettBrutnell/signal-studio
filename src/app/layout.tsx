@@ -21,9 +21,9 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Signal Studio — Conversion-focused creative for ads, landing pages, and campaign launches",
+  title: "Clear Motive — Conversion-focused creative for ads, landing pages, and campaign launches",
   description:
-    "Signal Studio is a creative agency that helps businesses and media buyers turn offers, campaigns, and ideas into polished creative built for clarity, speed, and conversion.",
+    "Clear Motive is a creative agency that helps businesses and media buyers turn offers, campaigns, and ideas into polished creative built for clarity, speed, and conversion.",
 };
 
 export default function RootLayout({

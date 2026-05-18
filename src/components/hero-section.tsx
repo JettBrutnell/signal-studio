@@ -25,7 +25,7 @@ export default function HeroSection() {
         {/* Sub */}
         <FadeIn delay={160}>
           <p className="mt-9 mb-10 max-w-[620px] text-[19px] leading-[1.55] text-ink-2">
-            Signal Studio helps businesses and media buyers turn offers, campaigns, and ideas
+            Clear Motive helps businesses and media buyers turn offers, campaigns, and ideas
             into polished creative built for clarity, speed, and conversion. Fixed scope. Fast delivery. Direct collaboration.
           </p>
         </FadeIn>
@@ -69,7 +69,7 @@ export default function HeroSection() {
                 headline="Sleep cooler. Without changing your mattress."
                 sub="A weighted, cooling sheet system. Tested cooler than the top 3 competitors. 60-night trial, free returns."
                 cta="Try it for 60 nights"
-                className="shadow-[0_30px_80px_-20px_oklch(0_0_0/0.15)]"
+                className="shadow-[0_30px_80px_-20px_oklch(0_0_0/0.5)]"
               />
               <div className="absolute -right-5 top-10 w-[180px] rotate-[4deg] hidden lg:block">
                 <MiniAd
@@ -79,7 +79,7 @@ export default function HeroSection() {
                   brand="HAVN"
                   cta="Shop bedding"
                   label="MATCH"
-                  className="shadow-[0_20px_60px_-20px_oklch(0_0_0/0.2)]"
+                  className="shadow-[0_20px_60px_-20px_oklch(0_0_0/0.5)]"
                 />
               </div>
             </div>

@@ -6,11 +6,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <a href="#top" className="flex items-center gap-3 mb-[22px]">
-              <div className="w-7 h-7 rounded-full bg-ink relative">
-                <div className="absolute inset-2 rounded-full bg-accent" />
+              <div className="w-7 h-7 rounded-full bg-accent relative">
+                <div className="absolute inset-2 rounded-full bg-paper" />
               </div>
               <div className="font-serif text-lg tracking-tight text-ink">
-                Signal <i className="text-ink-3">Studio</i>
+                Clear <i className="text-ink-3">Motive</i>
               </div>
             </a>
             <p className="text-sm text-ink-3 leading-[1.6] max-w-[360px]">
@@ -18,9 +18,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Studio links */}
+          {/* Agency links */}
           <div>
-            <div className="mono mb-3.5">Studio</div>
+            <div className="mono mb-3.5">Agency</div>
             <div className="flex flex-col gap-2">
               <a href="#what" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">What we do</a>
               <a href="#work" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Selected work</a>
@@ -34,7 +34,7 @@ export default function Footer() {
           <div>
             <div className="mono mb-3.5">Contact</div>
             <div className="flex flex-col gap-2">
-              <a href="mailto:hello@signalstudio.work" className="text-[13.5px] text-accent hover:text-accent-2 transition-colors">hello@signalstudio.work</a>
+              <a href="mailto:hello@clearmotive.co" className="text-[13.5px] text-accent hover:text-accent-2 transition-colors">hello@clearmotive.co</a>
               <a href="#form" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Request fit review &rarr;</a>
               <span className="text-[13.5px] text-ink-4">Currently accepting projects</span>
             </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 pt-5 border-t border-line flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-[10px] tracking-[0.08em] uppercase text-ink-4">
-          <div>&copy; 2026 Signal Studio &middot; A creative agency</div>
+          <div>&copy; 2026 Clear Motive &middot; A creative agency</div>
           <div>Built for results. No fluff.</div>
         </div>
       </div>

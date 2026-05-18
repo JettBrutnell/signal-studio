@@ -47,9 +47,9 @@ export default function OfferSection() {
               <div
                 className="rounded-xl p-8 flex flex-col h-full"
                 style={{
-                  background: o.featured ? 'var(--color-ink)' : 'var(--color-paper)',
-                  color: o.featured ? 'var(--color-paper)' : 'var(--color-ink)',
-                  border: o.featured ? '1px solid var(--color-ink)' : '1px solid var(--color-line)',
+                  background: o.featured ? 'var(--color-paper-3)' : 'var(--color-paper-2)',
+                  color: 'var(--color-ink)',
+                  border: o.featured ? '1px solid var(--color-accent)' : '1px solid var(--color-line)',
                 }}
               >
                 {/* Top meta */}
@@ -63,14 +63,14 @@ export default function OfferSection() {
                 </div>
 
                 <h3 className="m-0 font-serif text-[34px] leading-[1.05] tracking-tight">{o.name}</h3>
-                <p className="mt-3 mb-[22px] text-[14.5px] leading-[1.55]" style={{ color: o.featured ? 'oklch(0.85 0.005 80)' : 'var(--color-ink-2)' }}>
+                <p className="mt-3 mb-[22px] text-[14.5px] leading-[1.55] text-ink-2">
                   {o.who}
                 </p>
 
                 <div className="mt-auto">
                   {/* Includes */}
-                  <div className="pt-[22px] mb-[22px]" style={{ borderTop: `1px solid ${o.featured ? 'oklch(1 0 0 / 0.15)' : 'var(--color-line)'}` }}>
-                    <div className="mono mb-2.5" style={{ color: o.featured ? 'oklch(0.8 0.005 80)' : undefined }}>Includes</div>
+                  <div className="pt-[22px] mb-[22px] border-t border-line">
+                    <div className="mono mb-2.5">Includes</div>
                     <ul className="flex flex-col gap-2 list-none p-0 m-0">
                       {o.includes.map(item => (
                         <li key={item} className="text-[13.5px] flex gap-2.5">
@@ -81,9 +81,9 @@ export default function OfferSection() {
                   </div>
 
                   {/* Price + CTA */}
-                  <div className="flex justify-between items-end pt-[18px]" style={{ borderTop: `1px solid ${o.featured ? 'oklch(1 0 0 / 0.15)' : 'var(--color-line)'}` }}>
+                  <div className="flex justify-between items-end pt-[18px] border-t border-line">
                     <div>
-                      <div className="mono" style={{ color: o.featured ? 'oklch(0.8 0.005 80)' : undefined }}>Starts at</div>
+                      <div className="mono">Starts at</div>
                       <div className="font-serif text-[32px] tracking-tight">{o.price}</div>
                     </div>
                     <a

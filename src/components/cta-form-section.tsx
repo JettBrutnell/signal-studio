@@ -81,8 +81,8 @@ export default function CtaFormSection() {
           <FadeIn delay={200}>
             <div className="mt-12 pt-7 border-t border-line">
               <div className="mono mb-2">Prefer email</div>
-              <a href="mailto:hello@signalstudio.work" className="font-serif text-[30px] text-ink tracking-tight">
-                hello@signalstudio.work &rarr;
+              <a href="mailto:hello@clearmotive.co" className="font-serif text-[30px] text-ink tracking-tight">
+                hello@clearmotive.co &rarr;
               </a>
             </div>
           </FadeIn>
@@ -131,7 +131,7 @@ export default function CtaFormSection() {
                     className={`${fieldClass} appearance-none cursor-pointer`}
                     value={data.need} onChange={e => up('need', e.target.value)} required
                     style={{
-                      backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23444' d='M0 0h10L5 6z'/></svg>\")",
+                      backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23999' d='M0 0h10L5 6z'/></svg>\")",
                       backgroundRepeat: 'no-repeat',
                       backgroundPosition: 'right 4px center',
                     }}
@@ -155,7 +155,7 @@ export default function CtaFormSection() {
                       className={`${fieldClass} appearance-none cursor-pointer`}
                       value={data.budget} onChange={e => up('budget', e.target.value)}
                       style={{
-                        backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23444' d='M0 0h10L5 6z'/></svg>\")",
+                        backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23999' d='M0 0h10L5 6z'/></svg>\")",
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'right 4px center',
                       }}

@@ -24,7 +24,7 @@ export async function sendContactEmail(data: FitReviewData) {
       : ''
 
   const { error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? 'Signal Studio <onboarding@resend.dev>',
+    from: process.env.RESEND_FROM_EMAIL ?? 'Clear Motive <onboarding@resend.dev>',
     to: process.env.RESEND_TO_EMAIL ?? 'jettbrutnell@gmail.com',
     replyTo: email,
     subject: `Fit review request — ${esc(company.trim())}`,
@@ -32,7 +32,7 @@ export async function sendContactEmail(data: FitReviewData) {
       <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:580px;margin:0 auto;padding:32px 0;">
         <div style="border-bottom:2px solid #0a0a0a;padding-bottom:14px;margin-bottom:20px;">
           <h1 style="font-size:17px;font-weight:600;margin:0;color:#0a0a0a;">New Project Fit Review Request</h1>
-          <p style="font-size:12px;color:#737373;margin:4px 0 0;">via signalstudio.co.uk</p>
+          <p style="font-size:12px;color:#737373;margin:4px 0 0;">via clearmotive.co</p>
         </div>
 
         <table style="width:100%;border-collapse:collapse;">

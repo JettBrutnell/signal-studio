@@ -32,7 +32,7 @@ export default function FaqSection() {
               The questions that <span className="italic-accent">stop the form.</span>
             </h2>
             <p className="mt-6 text-ink-2 text-base leading-[1.55] max-w-[380px]">
-              If yours isn&apos;t here, write it into the project note when you submit — I&apos;ll address it in the reply.
+              If yours isn&apos;t here, write it into the project note when you submit — we&apos;ll address it in the reply.
             </p>
           </FadeIn>
         </div>
