@@ -23,9 +23,8 @@ export default function Footer() {
             <div className="mono mb-3.5">Agency</div>
             <div className="flex flex-col gap-2">
               <a href="#what" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">What we do</a>
-              <a href="#work" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Selected work</a>
               <a href="#process" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Process</a>
-              <a href="#offer" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Starting points</a>
+              <a href="#offer" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Pricing</a>
               <a href="#faq" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">FAQ</a>
             </div>
           </div>

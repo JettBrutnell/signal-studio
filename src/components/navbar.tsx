@@ -33,9 +33,8 @@ export default function Navbar() {
         <nav className="hidden md:flex gap-[26px] ml-auto">
           {[
             ['What we do', '#what'],
-            ['Selected work', '#work'],
             ['Process', '#process'],
-            ['Starting points', '#offer'],
+            ['Pricing', '#offer'],
             ['FAQ', '#faq'],
           ].map(([label, href]) => (
             <a key={href} href={href} className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">
@@ -47,9 +46,9 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <a
           href="#form"
-          className="hidden md:inline-flex items-center gap-2.5 bg-ink text-paper text-sm font-medium px-[22px] py-[13px] rounded-full hover:bg-accent hover:-translate-y-px transition-all whitespace-nowrap"
+          className="hidden md:inline-flex items-center gap-2.5 bg-accent text-paper text-sm font-medium px-[22px] py-[13px] rounded-full hover:brightness-110 hover:-translate-y-px transition-all whitespace-nowrap"
         >
-          Request fit review <span className="inline-block transition-transform group-hover:translate-x-0.5">&rarr;</span>
+          Start a project <span>&rarr;</span>
         </a>
 
         {/* Mobile toggle */}
@@ -70,9 +69,8 @@ export default function Navbar() {
           <nav className="flex flex-col gap-3 text-sm">
             {[
               ['What we do', '#what'],
-              ['Selected work', '#work'],
               ['Process', '#process'],
-              ['Starting points', '#offer'],
+              ['Pricing', '#offer'],
               ['FAQ', '#faq'],
             ].map(([label, href]) => (
               <a key={href} href={href} onClick={() => setMobileOpen(false)} className="text-ink-2">
@@ -80,8 +78,8 @@ export default function Navbar() {
               </a>
             ))}
           </nav>
-          <a href="#form" onClick={() => setMobileOpen(false)} className="mt-4 inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-5 py-3 rounded-full">
-            Request fit review &rarr;
+          <a href="#form" onClick={() => setMobileOpen(false)} className="mt-4 inline-flex items-center gap-2 bg-accent text-paper text-sm font-medium px-5 py-3 rounded-full">
+            Start a project &rarr;
           </a>
         </div>
       )}

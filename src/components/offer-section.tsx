@@ -34,7 +34,7 @@ export default function OfferSection() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
           <SectionHead
-            num="05"
+            num="04"
             kicker="Starting points"
             title={<>Three ways to <span className="italic-accent">begin together.</span></>}
             sub="Fixed-scope projects. Most engagements start in one of these three shapes. Custom scopes available on request."

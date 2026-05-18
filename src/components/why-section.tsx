@@ -16,8 +16,8 @@ export default function WhySection() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
           <SectionHead
-            num="04"
-            kicker="Why Signal Studio"
+            num="03"
+            kicker="Why Clear Motive"
             title="What you get when you skip the agency."
             sub="Six things we commit to on every project. They replace the testimonial wall."
           />

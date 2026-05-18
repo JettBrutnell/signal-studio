@@ -51,7 +51,7 @@ export default function CtaFormSection() {
         <div>
           <FadeIn>
             <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.10em] uppercase text-ink-3 mb-6">
-              <span className="text-accent">07</span>
+              <span className="text-accent">06</span>
               <span className="w-6 h-px bg-ink-2" />
               <span>Next step</span>
             </div>
