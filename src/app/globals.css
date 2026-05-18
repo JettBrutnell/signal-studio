@@ -70,6 +70,36 @@ body {
   color: var(--color-ink-3);
 }
 
+/* Loading screen animations */
+.loader-line {
+  animation: line-in 0.5s ease-out 0.2s both;
+}
+.loader-text {
+  animation: slide-up 0.6s ease-out 0.5s both;
+}
+.loader-tagline {
+  animation: slide-up 0.5s ease-out 0.8s both;
+}
+
+@keyframes line-in {
+  0% { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+@keyframes slide-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Hero grid background */
+.hero-grid {
+  background-image:
+    linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+}
+
 /* Placeholder visual pattern — for mock assets */
 .placeholder-img {
   position: relative;

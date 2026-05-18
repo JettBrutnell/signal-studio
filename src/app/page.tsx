@@ -7,10 +7,12 @@ import OfferSection from '@/components/offer-section'
 import FaqSection from '@/components/faq-section'
 import CtaFormSection from '@/components/cta-form-section'
 import Footer from '@/components/footer'
+import LoadingScreen from '@/components/loading-screen'
 
 export default function Home() {
   return (
     <>
+      <LoadingScreen />
       <Navbar />
       <main>
         <HeroSection />
