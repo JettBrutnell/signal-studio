@@ -2,12 +2,12 @@ import FadeIn from './fade-in'
 import SectionHead from './section-head'
 
 const bullets = [
-  ['Strategy and design handled together', "Your brief doesn't get passed through three people and come back unrecognizable."],
-  ['Built for campaign use, not just aesthetics', 'Files arrive named, ratio-organized, and ready to run.'],
-  ['Clear communication, direct contact', 'You talk to the team doing the work, not a project manager three timezones away.'],
-  ['Fast, fixed-scope execution', 'Two to three weeks per engagement. No retainer pressure.'],
-  ['Strong visual taste, plain language', 'No "elevating brand narratives." Sharp design, said simply.'],
-  ['Made for founders, media buyers, and lean teams', 'We work best with small teams that move fast and make decisions quickly.'],
+  ['Strategy baked into every deliverable', "We don't just make things look good — every asset is built around your offer, your audience, and a clear conversion goal."],
+  ['Campaign-ready from day one', 'Files arrive named, ratio-organized, and ready to run. No rework, no reformatting, no wasted ad spend on broken assets.'],
+  ['One team, one thread, zero handoffs', 'The people on the call are the people doing the work. Nothing gets lost in translation between departments.'],
+  ['Fixed scope, no surprises', 'You know exactly what you get, what it costs, and when it ships. Scope changes are agreed in writing before anything moves.'],
+  ['Built for speed without cutting corners', 'Most projects deliver in two to three weeks. We move fast because the process is tight, not because the work is rushed.'],
+  ['Designed for teams that ship', 'Founders, media buyers, growth leads — if you make decisions quickly and value execution over process theatre, we are the right fit.'],
 ]
 
 export default function WhySection() {
@@ -18,8 +18,8 @@ export default function WhySection() {
           <SectionHead
             num="03"
             kicker="Why Clear Motive"
-            title="What you get when you skip the agency."
-            sub="Six things we commit to on every project. They replace the testimonial wall."
+            title={<>Six reasons teams <span className="italic-accent">keep coming back.</span></>}
+            sub="No testimonial wall. No client logos. Just the commitments we make on every project — and why they matter."
           />
         </FadeIn>
 
