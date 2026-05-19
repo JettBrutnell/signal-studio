@@ -33,10 +33,10 @@ export default function HeroSection() {
 
         <FadeIn delay={200}>
           <div className="flex gap-3.5 flex-wrap">
-            <a href="#form" className="inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm hover:bg-accent-2 hover:-translate-y-px transition-all">
+            <a href="#form" data-clarity-label="hero-cta-primary" className="inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm hover:bg-accent-2 hover:-translate-y-px transition-all">
               Start a project <span>&rarr;</span>
             </a>
-            <a href="#what" className="inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm hover:text-ink hover:border-ink-3 transition-all">
+            <a href="#what" data-clarity-label="hero-cta-secondary" className="inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm hover:text-ink hover:border-ink-3 transition-all">
               See how we work
             </a>
           </div>

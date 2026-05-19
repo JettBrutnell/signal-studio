@@ -46,6 +46,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <a
           href="#form"
+          data-clarity-label="nav-cta"
           className="hidden md:inline-flex items-center gap-2.5 bg-accent text-paper text-sm font-medium px-[22px] py-[13px] rounded-full hover:brightness-110 hover:-translate-y-px transition-all whitespace-nowrap"
         >
           Start a project <span>&rarr;</span>

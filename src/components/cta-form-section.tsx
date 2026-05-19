@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import FadeIn from './fade-in'
+import { track } from '@/lib/track'
 
 export default function CtaFormSection() {
   const [submitted, setSubmitted] = useState(false)
@@ -34,11 +35,14 @@ export default function CtaFormSection() {
       if (res.ok) {
         setSubmitted(true)
         setStatus('idle')
+        track('form_submitted', { service: data.need, budget: data.budget })
       } else {
         setStatus('error')
+        track('form_error', { type: 'server' })
       }
     } catch {
       setStatus('error')
+      track('form_error', { type: 'network' })
     }
   }
 
