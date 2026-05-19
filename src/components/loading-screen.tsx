@@ -6,6 +6,12 @@ export default function LoadingScreen() {
   const [phase, setPhase] = useState<'active' | 'exiting' | 'done'>('active')
 
   useEffect(() => {
+    // Skip loading animation for users who prefer reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setPhase('done')
+      return
+    }
+
     // Prevent scroll while loading
     document.body.style.overflow = 'hidden'
 

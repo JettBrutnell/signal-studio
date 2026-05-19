@@ -52,7 +52,7 @@ export default function Navbar() {
         </a>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden ml-auto p-2" aria-label="Menu">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden ml-auto min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             {mobileOpen ? (
               <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />

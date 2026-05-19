@@ -30,6 +30,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-paper);
+  color-scheme: dark;
 }
 
 body {
@@ -98,6 +99,31 @@ body {
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
+}
+
+/* Dark-themed native form controls */
+select option {
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+}
+
+/* Visible focus ring for keyboard navigation */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--color-accent) !important;
+  outline: 2px solid oklch(0.72 0.12 230 / 0.25);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Placeholder visual pattern — for mock assets */

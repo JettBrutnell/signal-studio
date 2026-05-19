@@ -34,7 +34,7 @@ export default function Footer() {
             <div className="mono mb-3.5">Contact</div>
             <div className="flex flex-col gap-2">
               <a href="mailto:hello@clearmotive.co" className="text-[13.5px] text-accent hover:text-accent-2 transition-colors">hello@clearmotive.co</a>
-              <a href="#form" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Request fit review &rarr;</a>
+              <a href="#form" className="text-[13.5px] text-ink-2 hover:text-accent transition-colors">Start a project &rarr;</a>
               <span className="text-[13.5px] text-ink-4">Currently accepting projects</span>
             </div>
           </div>

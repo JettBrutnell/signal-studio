@@ -42,7 +42,7 @@ export default function CtaFormSection() {
     }
   }
 
-  const fieldClass = 'bg-transparent border-0 border-b border-line-2 rounded-none px-0 py-3 text-ink text-base w-full outline-none focus:border-ink transition-colors placeholder:text-ink-4'
+  const fieldClass = 'bg-transparent border-0 border-b border-line-2 rounded-none px-0 py-3 text-ink text-base w-full outline-none focus:border-accent transition-colors placeholder:text-ink-4'
 
   return (
     <section id="form" className="py-36 border-t border-line bg-paper-2">
@@ -108,26 +108,27 @@ export default function CtaFormSection() {
             ) : (
               <form onSubmit={submit} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Your name</label>
-                  <input className={fieldClass} value={data.name} onChange={e => up('name', e.target.value)} placeholder="Full name" required />
+                  <label htmlFor="field-name" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Your name</label>
+                  <input id="field-name" className={fieldClass} value={data.name} onChange={e => up('name', e.target.value)} placeholder="Full name" required />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Email</label>
-                  <input type="email" className={fieldClass} value={data.email} onChange={e => up('email', e.target.value)} placeholder="you@email.com" required />
+                  <label htmlFor="field-email" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Email</label>
+                  <input id="field-email" type="email" className={fieldClass} value={data.email} onChange={e => up('email', e.target.value)} placeholder="you@email.com" required />
                 </div>
-                <div className="grid grid-cols-2 gap-[22px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-[22px]">
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Business / brand</label>
-                    <input className={fieldClass} value={data.brand} onChange={e => up('brand', e.target.value)} placeholder="Brand name" required />
+                    <label htmlFor="field-brand" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Business / brand</label>
+                    <input id="field-brand" className={fieldClass} value={data.brand} onChange={e => up('brand', e.target.value)} placeholder="Brand name" required />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Website or Instagram</label>
-                    <input className={fieldClass} value={data.site} onChange={e => up('site', e.target.value)} placeholder="link or @handle" />
+                    <label htmlFor="field-site" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Website or Instagram</label>
+                    <input id="field-site" className={fieldClass} value={data.site} onChange={e => up('site', e.target.value)} placeholder="link or @handle" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">What do you need?</label>
+                  <label htmlFor="field-need" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">What do you need?</label>
                   <select
+                    id="field-need"
                     className={`${fieldClass} appearance-none cursor-pointer`}
                     value={data.need} onChange={e => up('need', e.target.value)} required
                     style={{
@@ -144,14 +145,15 @@ export default function CtaFormSection() {
                     <option>Not sure — help me figure it out</option>
                   </select>
                 </div>
-                <div className="grid grid-cols-2 gap-[22px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-[22px]">
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Timeline</label>
-                    <input className={fieldClass} value={data.timeline} onChange={e => up('timeline', e.target.value)} placeholder="e.g. 3 weeks, Q3" />
+                    <label htmlFor="field-timeline" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Timeline</label>
+                    <input id="field-timeline" className={fieldClass} value={data.timeline} onChange={e => up('timeline', e.target.value)} placeholder="e.g. 3 weeks, Q3" />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Budget range</label>
+                    <label htmlFor="field-budget" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Budget range</label>
                     <select
+                      id="field-budget"
                       className={`${fieldClass} appearance-none cursor-pointer`}
                       value={data.budget} onChange={e => up('budget', e.target.value)}
                       style={{
@@ -170,8 +172,8 @@ export default function CtaFormSection() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Project notes</label>
-                  <textarea className={`${fieldClass} resize-none`} rows={3} value={data.notes} onChange={e => up('notes', e.target.value)} placeholder="What are you trying to launch, fix, or improve?" />
+                  <label htmlFor="field-notes" className="font-mono text-[10px] tracking-[0.10em] uppercase text-ink-3">Project notes</label>
+                  <textarea id="field-notes" className={`${fieldClass} resize-none`} rows={3} value={data.notes} onChange={e => up('notes', e.target.value)} placeholder="What are you trying to launch, fix, or improve?" />
                 </div>
 
                 {status === 'error' && (
