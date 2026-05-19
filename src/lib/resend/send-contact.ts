@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-interface FitReviewData {
+interface ProjectBriefData {
   name: string
   email: string
   company: string
@@ -15,7 +15,7 @@ interface FitReviewData {
   notes?: string
 }
 
-export async function sendContactEmail(data: FitReviewData) {
+export async function sendContactEmail(data: ProjectBriefData) {
   const { name, email, company, website, services, budget, goal, timeline, phone, notes } = data
 
   const row = (label: string, value: string | undefined) =>
@@ -27,11 +27,11 @@ export async function sendContactEmail(data: FitReviewData) {
     from: process.env.RESEND_FROM_EMAIL ?? 'Clear Motive <onboarding@resend.dev>',
     to: process.env.RESEND_TO_EMAIL ?? 'jettbrutnell@gmail.com',
     replyTo: email,
-    subject: `Fit review request — ${esc(company.trim())}`,
+    subject: `New project brief — ${esc(company.trim())}`,
     html: `
       <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:580px;margin:0 auto;padding:32px 0;">
         <div style="border-bottom:2px solid #0a0a0a;padding-bottom:14px;margin-bottom:20px;">
-          <h1 style="font-size:17px;font-weight:600;margin:0;color:#0a0a0a;">New Project Fit Review Request</h1>
+          <h1 style="font-size:17px;font-weight:600;margin:0;color:#0a0a0a;">New Project Brief</h1>
           <p style="font-size:12px;color:#737373;margin:4px 0 0;">via clearmotive.co</p>
         </div>
 

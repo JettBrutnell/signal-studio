@@ -36,7 +36,7 @@ export default function LoadingScreen() {
       <div
         className="absolute w-[400px] h-[200px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, oklch(0.58 0.20 28 / 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.07) 0%, transparent 70%)',
         }}
       />
 

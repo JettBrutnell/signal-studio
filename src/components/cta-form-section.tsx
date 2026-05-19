@@ -56,19 +56,19 @@ export default function CtaFormSection() {
               <span>Next step</span>
             </div>
             <h2 className="display m-0 text-[clamp(48px,5.6vw,84px)]">
-              Request a project<br /><span className="italic-accent">fit review.</span>
+              Start your<br /><span className="italic-accent">project.</span>
             </h2>
-            <p className="mt-7 text-[18px] leading-[1.55] text-ink-2 max-w-[460px]">
-              Send through what you need built. We&apos;ll review the project, confirm whether it fits, and reply with a rough scope, timeline, and next step.
+            <p className="mt-7 text-lg leading-[1.55] text-ink-2 max-w-[460px]">
+              Tell us what you need built. We&apos;ll reply with a clear scope, timeline, and quote within one business day.
             </p>
           </FadeIn>
 
           <FadeIn delay={100}>
             <div className="mt-10 flex flex-col gap-3.5">
               {[
-                'Personal reply within one business day.',
-                'No discovery calls before scope is clear.',
-                "If it's not a fit, we'll tell you and point you elsewhere.",
+                'Clear scope and quote within one business day.',
+                'No calls before you see numbers.',
+                "If it's not a fit, we'll say so and point you elsewhere.",
               ].map((line, i) => (
                 <div key={i} className="flex gap-3.5 items-baseline">
                   <span className="text-accent">&rarr;</span>
@@ -183,7 +183,7 @@ export default function CtaFormSection() {
                   disabled={status === 'submitting'}
                   className="mt-2 bg-ink text-paper font-medium py-4 rounded-full text-[15px] hover:bg-accent hover:-translate-y-px transition-all cursor-pointer border-0 disabled:opacity-50"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Send fit review request →'}
+                  {status === 'submitting' ? 'Sending…' : 'Send project brief →'}
                 </button>
               </form>
             )}

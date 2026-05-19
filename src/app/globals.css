@@ -16,10 +16,10 @@
   --color-line:   oklch(0.22 0.005 260);
   --color-line-2: oklch(0.30 0.008 260);
 
-  /* Ember accent */
-  --color-accent:      oklch(0.58 0.20 28);
-  --color-accent-2:    oklch(0.50 0.20 28);
-  --color-accent-soft: oklch(0.58 0.20 28 / 0.12);
+  /* Light blue accent — readable on dark, reserved for primary actions */
+  --color-accent:      oklch(0.72 0.12 230);
+  --color-accent-2:    oklch(0.64 0.14 230);
+  --color-accent-soft: oklch(0.72 0.12 230 / 0.10);
 
   /* Font stacks */
   --font-serif: var(--font-instrument), "Times New Roman", serif;
@@ -90,14 +90,14 @@ body {
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Hero grid background */
+/* Hero background — single subtle glow, masked grid */
 .hero-grid {
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+    linear-gradient(oklch(1 0 0 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
 }
 
 /* Placeholder visual pattern — for mock assets */

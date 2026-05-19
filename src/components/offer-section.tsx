@@ -91,7 +91,7 @@ export default function OfferSection() {
                       className="inline-flex items-center gap-2 rounded-full px-[18px] py-[11px] text-[13px] font-medium text-paper transition-all hover:-translate-y-px"
                       style={{ background: o.featured ? 'var(--color-accent)' : 'var(--color-ink)' }}
                     >
-                      Enquire <span>&rarr;</span>
+                      Get a quote <span>&rarr;</span>
                     </a>
                   </div>
                 </div>
