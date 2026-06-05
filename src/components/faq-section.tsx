@@ -44,8 +44,8 @@ export default function FaqSection() {
               <div className={`border-b border-line ${i === 0 ? 'border-t' : ''}`}>
                 <button
                   onClick={() => setOpen(open === i ? -1 : i)}
-                  className="w-full flex justify-between items-center gap-5 py-6 text-left text-ink text-[19px] font-normal cursor-pointer bg-transparent border-0"
-                  style={{ fontFamily: 'var(--font-sans)' }}
+                  className="w-full flex justify-between items-center gap-5 py-6 text-left text-ink text-[17px] font-medium cursor-pointer bg-transparent border-0"
+                  style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.01em' }}
                 >
                   <span className="flex gap-[18px] items-baseline">
                     <span className="mono text-ink-4">{String(i + 1).padStart(2, '0')}</span>

@@ -1,24 +1,42 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Instrument_Serif } from "next/font/google";
+import { Syne } from "next/font/google";
+import { Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/analytics";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Geometric heavy sans — all headings, display, UI elements
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const instrument = Instrument_Serif({
-  variable: "--font-instrument",
+// Wonky optical variable serif — italic accents only
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: "400",
+  axes: ["WONK", "opsz"],
+  display: "swap",
+});
+
+// Humanist body sans — body copy, descriptions
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Mono with character — labels, badges, mono elements
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
+    >
       <body>
         {children}
         <AnalyticsProvider />

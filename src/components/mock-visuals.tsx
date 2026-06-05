@@ -27,7 +27,7 @@ export function MiniAd({ ratio = '4/5', headline, sub, cta = 'Learn more', brand
         </div>
       )}
       {headline && (
-        <div className="absolute left-3.5 right-3.5 bottom-14 font-serif text-[22px] leading-[1.05] text-ink tracking-tight">
+        <div className="absolute left-3.5 right-3.5 bottom-14 font-heading text-[22px] leading-[1.05] text-ink tracking-tight">
           {headline}
         </div>
       )}
@@ -64,7 +64,7 @@ export function MiniLP({ headline = 'A page that explains the offer.', sub = 'Bu
       {/* Page content */}
       <div className="p-6">
         <div className="mono mb-3">HERO</div>
-        <div className="font-serif text-[26px] leading-[1.05] text-ink tracking-tight mb-2">{headline}</div>
+        <div className="font-heading text-[26px] leading-[1.05] text-ink tracking-tight mb-2">{headline}</div>
         <div className="text-xs text-ink-3 mb-4 leading-relaxed max-w-[280px]">{sub}</div>
         <div className="inline-block px-3.5 py-2 rounded-full bg-accent text-paper text-[11px] font-medium">{cta} &rarr;</div>
         <div className="grid grid-cols-3 gap-2 mt-5">

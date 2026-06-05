@@ -24,8 +24,8 @@ export default function Navbar() {
           <div className="w-7 h-7 rounded-full bg-accent relative animate-ring-pulse">
             <div className="absolute inset-2 rounded-full bg-paper" />
           </div>
-          <div className="font-serif text-lg tracking-tight text-ink">
-            Clear <i className="text-ink-3">Motive</i>
+          <div className="font-heading font-bold text-lg tracking-tight text-ink">
+            Clear <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700, fontVariationSettings: "'WONK' 1" }} className="text-ink-3">Motive</span>
           </div>
         </a>
 

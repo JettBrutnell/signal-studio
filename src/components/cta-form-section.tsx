@@ -85,7 +85,7 @@ export default function CtaFormSection() {
           <FadeIn delay={200}>
             <div className="mt-12 pt-7 border-t border-line">
               <div className="mono mb-2">Prefer email</div>
-              <a href="mailto:hello@clearmotive.co" className="font-serif text-[30px] text-ink tracking-tight">
+              <a href="mailto:hello@clearmotive.co" className="font-heading font-bold text-[28px] text-ink" style={{ letterSpacing: '-0.03em' }}>
                 hello@clearmotive.co &rarr;
               </a>
             </div>

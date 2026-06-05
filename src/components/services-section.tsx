@@ -62,7 +62,7 @@ export default function ServicesSection() {
                   {/* Content */}
                   <div className="p-6 lg:p-7 flex-1 flex flex-col">
                     <div className="mono text-accent">{c.n}</div>
-                    <h3 className="mt-3 mb-2.5 font-serif text-[30px] leading-[1.05] tracking-tight">{c.title}</h3>
+                    <h3 className="mt-3 mb-2.5 font-heading font-bold text-[28px] leading-[1.0] tracking-tighter">{c.title}</h3>
                     <p className="text-[14.5px] leading-[1.55] text-ink-2">{c.desc}</p>
                     <div className="mt-auto pt-5">
                       <div className="pt-[18px] border-t border-dashed border-line">

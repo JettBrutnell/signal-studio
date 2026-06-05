@@ -68,10 +68,21 @@ export default function LoadingScreen() {
         {/* Brand name */}
         <div className="overflow-hidden">
           <h2
-            className="font-serif text-[clamp(36px,6vw,64px)] tracking-tight text-ink loader-text"
-            style={{ lineHeight: 1 }}
+            className="font-heading font-extrabold text-[clamp(36px,6vw,64px)] text-ink loader-text"
+            style={{ lineHeight: 0.92, letterSpacing: '-0.04em' }}
           >
-            Clear <i className="text-ink-3">Motive</i>
+            Clear{' '}
+            <span
+              className="text-ink-3"
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontWeight: 700,
+                fontVariationSettings: "'WONK' 1, 'opsz' 48",
+              }}
+            >
+              Motive
+            </span>
           </h2>
         </div>
 

@@ -65,7 +65,7 @@ export default function OfferSection() {
                   )}
                 </div>
 
-                <h3 className="m-0 font-serif text-[34px] leading-[1.05] tracking-tight">{o.name}</h3>
+                <h3 className="m-0 font-heading font-extrabold text-[32px] leading-[1.0]" style={{ letterSpacing: '-0.04em' }}>{o.name}</h3>
                 <p className="mt-3 mb-[22px] text-[14.5px] leading-[1.55] text-ink-2">
                   {o.who}
                 </p>
@@ -87,7 +87,7 @@ export default function OfferSection() {
                   <div className="flex justify-between items-end pt-[18px] border-t border-line">
                     <div>
                       <div className="mono">Starts at</div>
-                      <div className="font-serif text-[32px] tracking-tight">{o.price}</div>
+                      <div className="font-heading font-extrabold text-[30px]" style={{ letterSpacing: '-0.04em' }}>{o.price}</div>
                     </div>
                     <a
                       href="#form"

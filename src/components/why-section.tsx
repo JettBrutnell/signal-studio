@@ -29,7 +29,7 @@ export default function WhySection() {
               <div className="grid grid-cols-[54px_1fr] gap-5 pt-[22px] border-t border-line">
                 <div className="mono text-accent">0{i + 1}</div>
                 <div>
-                  <div className="font-serif text-[26px] leading-[1.1] tracking-tight text-ink">{h}</div>
+                  <div className="font-heading font-bold text-[24px] leading-[1.05] text-ink" style={{ letterSpacing: '-0.03em' }}>{h}</div>
                   <div className="mt-2 text-[14.5px] text-ink-3 leading-[1.55]">{s}</div>
                 </div>
               </div>
