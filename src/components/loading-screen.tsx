@@ -2,24 +2,30 @@
 
 import { useState, useEffect } from 'react'
 
+const BARS = [
+  { cls: 'animate-eq-1', delay: '0ms' },
+  { cls: 'animate-eq-2', delay: '0ms' },
+  { cls: 'animate-eq-3', delay: '0ms' },
+  { cls: 'animate-eq-4', delay: '0ms' },
+  { cls: 'animate-eq-5', delay: '0ms' },
+]
+
 export default function LoadingScreen() {
   const [phase, setPhase] = useState<'active' | 'exiting' | 'done'>('active')
 
   useEffect(() => {
-    // Skip loading animation for users who prefer reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setPhase('done')
       return
     }
 
-    // Prevent scroll while loading
     document.body.style.overflow = 'hidden'
 
-    const exitTimer = setTimeout(() => setPhase('exiting'), 1900)
+    const exitTimer = setTimeout(() => setPhase('exiting'), 2000)
     const doneTimer = setTimeout(() => {
       setPhase('done')
       document.body.style.overflow = ''
-    }, 2700)
+    }, 2900)
 
     return () => {
       clearTimeout(exitTimer)
@@ -35,20 +41,29 @@ export default function LoadingScreen() {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-paper"
       style={{
         transform: phase === 'exiting' ? 'translateY(-100%)' : 'translateY(0)',
-        transition: phase === 'exiting' ? 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
+        transition: phase === 'exiting' ? 'transform 0.9s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
       }}
     >
-      {/* Accent glow behind text */}
+      {/* Ambient glow */}
       <div
-        className="absolute w-[400px] h-[200px] rounded-full pointer-events-none"
+        className="absolute w-[500px] h-[300px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.08) 0%, transparent 70%)',
+          animation: 'glow-pulse 3s ease-in-out infinite',
         }}
       />
 
-      <div className="relative flex flex-col items-center gap-6">
-        {/* Line */}
-        <div className="w-[60px] h-px bg-accent loader-line" />
+      <div className="relative flex flex-col items-center gap-8">
+        {/* Equalizer bars */}
+        <div className="flex items-end gap-[5px] h-[56px]">
+          {BARS.map((b, i) => (
+            <div
+              key={i}
+              className={`w-[5px] rounded-full bg-accent ${b.cls}`}
+              style={{ minHeight: '4px', animationDelay: b.delay }}
+            />
+          ))}
+        </div>
 
         {/* Brand name */}
         <div className="overflow-hidden">

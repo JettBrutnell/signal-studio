@@ -13,8 +13,8 @@ interface MiniAdProps {
 export function MiniAd({ ratio = '4/5', headline, sub, cta = 'Learn more', brand = 'BRAND', label, className = '' }: MiniAdProps) {
   return (
     <div className={`relative overflow-hidden rounded-[10px] border border-line bg-paper-2 ${className}`} style={{ aspectRatio: ratio }}>
-      {/* Photo placeholder */}
-      <div className="absolute inset-0" style={{ background: 'repeating-linear-gradient(135deg, transparent 0 14px, oklch(1 0 0 / 0.04) 14px 15px), var(--color-paper-3)' }} />
+      {/* Photo placeholder with shimmer */}
+      <div className="absolute inset-0 shimmer-line" style={{ background: 'repeating-linear-gradient(135deg, transparent 0 14px, oklch(1 0 0 / 0.04) 14px 15px), var(--color-paper-3)' }} />
       {/* Chrome bar */}
       <div className="absolute left-3 right-3 top-2.5 flex items-center gap-2 font-mono text-[9px] text-ink-3 tracking-wider">
         <div className="w-4 h-4 rounded-full bg-ink" />

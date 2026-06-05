@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <a href="#top" className="flex items-center gap-3 mb-[22px]">
-              <div className="w-7 h-7 rounded-full bg-accent relative">
+              <div className="w-7 h-7 rounded-full bg-accent relative animate-ring-pulse">
                 <div className="absolute inset-2 rounded-full bg-paper" />
               </div>
               <div className="font-serif text-lg tracking-tight text-ink">

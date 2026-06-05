@@ -1,5 +1,6 @@
 import FadeIn from './fade-in'
 import SectionHead from './section-head'
+import TiltCard from './tilt-card'
 
 const offers = [
   {
@@ -44,12 +45,14 @@ export default function OfferSection() {
         <div className="grid md:grid-cols-3 gap-5">
           {offers.map((o, i) => (
             <FadeIn key={o.name} delay={i * 100}>
+              <TiltCard className="h-full">
               <div
                 className="rounded-xl p-8 flex flex-col h-full"
                 style={{
                   background: o.featured ? 'var(--color-paper-3)' : 'var(--color-paper-2)',
                   color: 'var(--color-ink)',
                   border: o.featured ? '1px solid var(--color-accent)' : '1px solid var(--color-line)',
+                  boxShadow: o.featured ? '0 0 40px oklch(0.72 0.12 230 / 0.08)' : 'none',
                 }}
               >
                 {/* Top meta */}
@@ -97,6 +100,7 @@ export default function OfferSection() {
                   </div>
                 </div>
               </div>
+              </TiltCard>
             </FadeIn>
           ))}
         </div>

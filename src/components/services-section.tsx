@@ -1,5 +1,6 @@
 import FadeIn from './fade-in'
 import SectionHead from './section-head'
+import TiltCard from './tilt-card'
 import { MiniAd, MiniLP } from './mock-visuals'
 
 const cards = [
@@ -50,32 +51,34 @@ export default function ServicesSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {cards.map((c, i) => (
             <FadeIn key={c.n} delay={i * 100}>
-              <div className="bg-paper border border-line rounded-xl overflow-hidden flex flex-col h-full">
-                {/* Visual area */}
-                <div className="aspect-[4/3] border-b border-line bg-paper-2 relative overflow-hidden">
-                  <div className="absolute inset-5 flex items-center justify-center">
-                    <div className="w-[70%] max-h-full">{c.visual}</div>
+              <TiltCard className="h-full">
+                <div className="bg-paper border border-line rounded-xl overflow-hidden flex flex-col h-full">
+                  {/* Visual area with shimmer */}
+                  <div className="aspect-[4/3] border-b border-line bg-paper-2 relative overflow-hidden shimmer-line">
+                    <div className="absolute inset-5 flex items-center justify-center">
+                      <div className="w-[70%] max-h-full">{c.visual}</div>
+                    </div>
                   </div>
-                </div>
-                {/* Content */}
-                <div className="p-6 lg:p-7 flex-1 flex flex-col">
-                  <div className="mono text-accent">{c.n}</div>
-                  <h3 className="mt-3 mb-2.5 font-serif text-[30px] leading-[1.05] tracking-tight">{c.title}</h3>
-                  <p className="text-[14.5px] leading-[1.55] text-ink-2">{c.desc}</p>
-                  <div className="mt-auto pt-5">
-                    <div className="pt-[18px] border-t border-dashed border-line">
-                      <div className="mono mb-2.5">Deliverables</div>
-                      <ul className="flex flex-col gap-1.5 list-none p-0 m-0">
-                        {c.deliv.map(d => (
-                          <li key={d} className="text-[13px] text-ink-2 flex gap-2">
-                            <span className="text-ink-4">&middot;</span>{d}
-                          </li>
-                        ))}
-                      </ul>
+                  {/* Content */}
+                  <div className="p-6 lg:p-7 flex-1 flex flex-col">
+                    <div className="mono text-accent">{c.n}</div>
+                    <h3 className="mt-3 mb-2.5 font-serif text-[30px] leading-[1.05] tracking-tight">{c.title}</h3>
+                    <p className="text-[14.5px] leading-[1.55] text-ink-2">{c.desc}</p>
+                    <div className="mt-auto pt-5">
+                      <div className="pt-[18px] border-t border-dashed border-line">
+                        <div className="mono mb-2.5">Deliverables</div>
+                        <ul className="flex flex-col gap-1.5 list-none p-0 m-0">
+                          {c.deliv.map(d => (
+                            <li key={d} className="text-[13px] text-ink-2 flex gap-2">
+                              <span className="text-ink-4">&middot;</span>{d}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </FadeIn>
           ))}
         </div>

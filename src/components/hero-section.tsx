@@ -1,17 +1,47 @@
 import FadeIn from './fade-in'
 
+const TICKER_ITEMS = [
+  'Fixed scope', '·', '2–3 week delivery', '·',
+  'Direct collaboration', '·', 'No account managers', '·',
+  'Fixed scope', '·', '2–3 week delivery', '·',
+  'Direct collaboration', '·', 'No account managers', '·',
+]
+
 export default function HeroSection() {
   return (
-    <section id="top" className="relative overflow-hidden min-h-[100dvh] flex items-center">
-      {/* Background — one purposeful glow, subtle grid */}
+    <section id="top" className="relative overflow-hidden min-h-[100dvh] flex flex-col items-center">
+      {/* Grid */}
       <div className="absolute inset-0 hero-grid" />
+
+      {/* Orb A — primary centre glow, slowly drifting */}
       <div
-        className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.06) 0%, transparent 65%)' }}
+        className="absolute top-[-8%] left-1/2 -translate-x-1/2 w-[1000px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.07) 0%, transparent 62%)',
+          animation: 'orb-float-a 20s ease-in-out infinite',
+        }}
+      />
+
+      {/* Orb B — bottom-right accent */}
+      <div
+        className="absolute bottom-[18%] right-[5%] w-[480px] h-[360px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.045) 0%, transparent 65%)',
+          animation: 'orb-float-b 24s ease-in-out infinite 4s',
+        }}
+      />
+
+      {/* Orb C — far left, very faint */}
+      <div
+        className="absolute top-[45%] -left-[8%] w-[380px] h-[280px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.03) 0%, transparent 70%)',
+          animation: 'orb-float-c 28s ease-in-out infinite 8s',
+        }}
       />
 
       {/* Content */}
-      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] relative w-full py-44">
+      <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] relative w-full py-44 flex-1 flex flex-col justify-center">
         <FadeIn>
           <div className="font-mono text-[11px] tracking-[0.10em] uppercase text-ink-3 mb-8">
             Creative agency
@@ -21,7 +51,7 @@ export default function HeroSection() {
         <FadeIn delay={80}>
           <h1 className="display m-0 text-[clamp(56px,8vw,120px)] max-w-[900px]">
             Creative that<br className="hidden sm:block" />
-            <span className="italic-accent">converts.</span>
+            <span className="italic-accent shimmer-line">converts.</span>
           </h1>
         </FadeIn>
 
@@ -33,25 +63,45 @@ export default function HeroSection() {
 
         <FadeIn delay={200}>
           <div className="flex gap-3.5 flex-wrap">
-            <a href="#form" data-clarity-label="hero-cta-primary" className="inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm hover:bg-accent-2 hover:-translate-y-px transition-all">
+            <a
+              href="#form"
+              data-clarity-label="hero-cta-primary"
+              className="inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm hover:bg-accent-2 hover:-translate-y-px transition-all"
+              style={{ boxShadow: '0 0 0 0 oklch(0.72 0.12 230 / 0)' }}
+            >
               Start a project <span>&rarr;</span>
             </a>
-            <a href="#what" data-clarity-label="hero-cta-secondary" className="inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm hover:text-ink hover:border-ink-3 transition-all">
+            <a
+              href="#what"
+              data-clarity-label="hero-cta-secondary"
+              className="inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm hover:text-ink hover:border-ink-3 transition-all"
+            >
               See how we work
             </a>
           </div>
         </FadeIn>
-
-        <FadeIn delay={260}>
-          <div className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.06em] uppercase text-ink-4">
-            <span>Fixed scope</span>
-            <span className="text-line-2">/</span>
-            <span>2–3 week delivery</span>
-            <span className="text-line-2">/</span>
-            <span>Direct collaboration</span>
-          </div>
-        </FadeIn>
       </div>
+
+      {/* Marquee ticker strip */}
+      <FadeIn delay={320} className="w-full relative mt-auto">
+        <div className="border-t border-line py-4 overflow-hidden">
+          <div
+            className="flex items-center whitespace-nowrap gap-0"
+            style={{ animation: 'marquee 22s linear infinite', width: 'max-content' }}
+          >
+            {TICKER_ITEMS.map((item, i) => (
+              <span
+                key={i}
+                className={`font-mono text-[11px] tracking-[0.07em] uppercase ${
+                  item === '·' ? 'text-accent mx-5' : 'text-ink-4'
+                }`}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
     </section>
   )
 }
