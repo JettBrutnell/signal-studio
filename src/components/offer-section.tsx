@@ -92,7 +92,7 @@ export default function OfferSection() {
                     <a
                       href="#form"
                       data-clarity-label={`offer-cta-${o.name.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="inline-flex items-center gap-2 rounded-full px-[18px] py-[11px] text-[13px] font-medium text-paper transition-all hover:-translate-y-px"
+                      className={`${o.featured ? 'btn-primary' : 'btn-dark'} inline-flex items-center gap-2 rounded-full px-[18px] py-[11px] text-[13px] font-medium text-paper`}
                       style={{ background: o.featured ? 'var(--color-accent)' : 'var(--color-ink)' }}
                     >
                       Get a quote <span>&rarr;</span>

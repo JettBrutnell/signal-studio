@@ -66,15 +66,14 @@ export default function HeroSection() {
             <a
               href="#form"
               data-clarity-label="hero-cta-primary"
-              className="inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm hover:bg-accent-2 hover:-translate-y-px transition-all"
-              style={{ boxShadow: '0 0 0 0 oklch(0.72 0.12 230 / 0)' }}
+              className="btn-primary inline-flex items-center gap-2.5 bg-accent text-paper font-medium px-6 py-3.5 rounded-full text-sm"
             >
               Start a project <span>&rarr;</span>
             </a>
             <a
               href="#what"
               data-clarity-label="hero-cta-secondary"
-              className="inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm hover:text-ink hover:border-ink-3 transition-all"
+              className="btn-secondary inline-flex items-center gap-2.5 text-ink-2 border border-line-2 px-6 py-3.5 rounded-full text-sm"
             >
               See how we work
             </a>

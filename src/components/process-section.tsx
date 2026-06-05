@@ -74,9 +74,9 @@ export default function ProcessSection() {
                       transition: `opacity 0.3s ease ${0.4 + i * 0.12}s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1) ${0.4 + i * 0.12}s`,
                     }}
                   />
-                  <div className="font-heading font-extrabold text-5xl text-accent leading-none" style={{ letterSpacing: '-0.05em' }}>{s.n}</div>
+                  <div className="font-heading font-bold text-5xl text-accent leading-none" style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 48" }}>{s.n}</div>
                 </div>
-                <h3 className="m-0 font-heading font-bold text-4xl leading-none" style={{ letterSpacing: '-0.04em' }}>{s.t}</h3>
+                <h3 className="m-0 font-heading font-bold text-4xl leading-none" style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 36" }}>{s.t}</h3>
                 <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 lg:col-span-1">{s.body}</p>
               </div>
             </FadeIn>

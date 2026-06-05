@@ -187,7 +187,7 @@ export default function CtaFormSection() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="mt-2 bg-ink text-paper font-medium py-4 rounded-full text-[15px] hover:bg-accent hover:-translate-y-px transition-all cursor-pointer border-0 disabled:opacity-50"
+                  className="btn-primary mt-2 bg-accent text-paper font-medium py-4 rounded-full text-[15px] cursor-pointer border-0 disabled:opacity-50 w-full"
                 >
                   {status === 'submitting' ? 'Sending…' : 'Send project brief →'}
                 </button>

@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Syne } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import { Fraunces } from "next/font/google";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/analytics";
 
-// Geometric heavy sans — all headings, display, UI elements
-const syne = Syne({
-  variable: "--font-syne",
+// Irregular grotesque — all headings, display, wordmark
+// Deliberately uneven proportions give it a handcrafted, designed feel
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-syne",   // reuses existing CSS var — no downstream changes needed
   subsets: ["latin"],
-  weight: ["700", "800"],
   display: "swap",
+  axes: ["opsz"],
 });
 
-// Wonky optical variable serif — italic accents only
+// Wonky optical variable serif — italic accent words only
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -23,15 +24,15 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-// Humanist body sans — body copy, descriptions
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+// Clean geometric body sans
+const outfit = Outfit({
+  variable: "--font-jakarta",  // reuses existing CSS var
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
 });
 
-// Mono with character — labels, badges, mono elements
+// Mono with character — labels, badges
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
@@ -53,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${bricolage.variable} ${fraunces.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body>
         {children}
