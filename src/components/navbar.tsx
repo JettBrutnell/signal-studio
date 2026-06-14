@@ -1,10 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled,    setScrolled]    = useState(false)
+  const [mobileOpen,  setMobileOpen]  = useState(false)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60)
@@ -12,41 +13,53 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  // Over dark hero → light text. Scrolled into warm-paper sections → charcoal text.
-  const linkColor = scrolled ? '#68442C' : '#C4B8AC'
-  const logoColor = scrolled ? '#353534' : '#F0EBE3'
-  const logoMuted = scrolled ? '#8A7060' : '#C4B8AC'
+  const linkColor  = scrolled ? '#68442C' : '#C4B8AC'
+  const logoColor  = scrolled ? '#353534' : '#F0EBE3'
+  const logoMuted  = scrolled ? '#8A7060' : '#C4B8AC'
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        scrolled
-          ? 'backdrop-blur-[14px] backdrop-saturate-[1.4] border-b'
-          : ''
+        scrolled ? 'backdrop-blur-[14px] backdrop-saturate-[1.4] border-b' : ''
       }`}
-      style={scrolled ? {
-        background: 'rgba(244,241,234,0.88)',
-        borderBottomColor: '#D8D3C6',
-      } : {}}
+      style={scrolled ? { background: 'rgba(244,241,234,0.88)', borderBottomColor: '#D8D3C6' } : {}}
     >
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)] flex items-center gap-6 py-[18px]">
-        {/* Logo */}
-        <a href="#top" className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-full relative animate-ring-pulse flex-shrink-0" style={{ background: '#A17248' }}>
-            <div className="absolute inset-2 rounded-full" style={{ background: scrolled ? '#F4F1EA' : '#1C1614' }} />
+
+        {/* Logo — CM monogram + wordmark */}
+        <a href="#top" className="flex items-center gap-3 flex-shrink-0">
+          <div className="relative w-8 h-8 flex-shrink-0">
+            <Image
+              src="/cm-monogram.png"
+              alt="Clear Motive"
+              fill
+              sizes="32px"
+              className="object-contain"
+            />
           </div>
           <div className="font-heading font-bold text-lg tracking-tight" style={{ color: logoColor }}>
-            Clear <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700, fontVariationSettings: "'WONK' 1", color: logoMuted }}>Motive</span>
+            Clear{' '}
+            <span
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontWeight: 700,
+                fontVariationSettings: "'WONK' 1",
+                color: logoMuted,
+              }}
+            >
+              Motive
+            </span>
           </div>
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop nav */}
         <nav className="hidden md:flex gap-[26px] ml-auto">
           {[
             ['What we do', '#what'],
-            ['Process', '#process'],
-            ['Pricing', '#offer'],
-            ['FAQ', '#faq'],
+            ['Process',    '#process'],
+            ['Pricing',    '#offer'],
+            ['FAQ',        '#faq'],
           ].map(([label, href]) => (
             <a
               key={href}
@@ -90,15 +103,25 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t px-[clamp(24px,5vw,64px)] py-5" style={{ background: '#F4F1EA', borderTopColor: '#D8D3C6' }}>
+        <div
+          className="md:hidden border-t px-[clamp(24px,5vw,64px)] py-5"
+          style={{ background: '#F4F1EA', borderTopColor: '#D8D3C6' }}
+        >
           <nav className="flex flex-col gap-3 text-sm">
             {[
               ['What we do', '#what'],
-              ['Process', '#process'],
-              ['Pricing', '#offer'],
-              ['FAQ', '#faq'],
+              ['Process',    '#process'],
+              ['Pricing',    '#offer'],
+              ['FAQ',        '#faq'],
             ].map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setMobileOpen(false)} style={{ color: '#68442C' }}>{label}</a>
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                style={{ color: '#68442C' }}
+              >
+                {label}
+              </a>
             ))}
           </nav>
           <a

@@ -1,17 +1,21 @@
-import Navbar from '@/components/navbar'
-import HeroSection from '@/components/hero-section'
+import Navbar         from '@/components/navbar'
+import HeroSection    from '@/components/hero-section'
 import ServicesSection from '@/components/services-section'
-import WhySection from '@/components/why-section'
+import WhySection     from '@/components/why-section'
 import ProcessSection from '@/components/process-section'
-import OfferSection from '@/components/offer-section'
-import FaqSection from '@/components/faq-section'
+import OfferSection   from '@/components/offer-section'
+import FaqSection     from '@/components/faq-section'
 import CtaFormSection from '@/components/cta-form-section'
-import Footer from '@/components/footer'
-import LoadingScreen from '@/components/loading-screen'
+import Footer         from '@/components/footer'
+import LoadingScreen  from '@/components/loading-screen'
+import ScrollProgress from '@/components/scroll-progress'
+import CursorFollower from '@/components/cursor-follower'
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
+      <CursorFollower />
       <LoadingScreen />
       <Navbar />
       <main>

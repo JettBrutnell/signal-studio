@@ -46,6 +46,7 @@ export default function WhySection() {
                 src="/studio-hold.png"
                 alt="Clear Motive studio"
                 fill
+                sizes="220px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-paper-2/80 pointer-events-none" />

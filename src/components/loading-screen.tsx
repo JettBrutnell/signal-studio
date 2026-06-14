@@ -21,11 +21,11 @@ export default function LoadingScreen() {
 
     document.body.style.overflow = 'hidden'
 
-    const exitTimer = setTimeout(() => setPhase('exiting'), 2000)
+    const exitTimer = setTimeout(() => setPhase('exiting'), 1200)
     const doneTimer = setTimeout(() => {
       setPhase('done')
       document.body.style.overflow = ''
-    }, 2900)
+    }, 1800)
 
     return () => {
       clearTimeout(exitTimer)
@@ -42,7 +42,7 @@ export default function LoadingScreen() {
       style={{
         background: '#1C1614',
         transform: phase === 'exiting' ? 'translateY(-100%)' : 'translateY(0)',
-        transition: phase === 'exiting' ? 'transform 0.9s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
+        transition: phase === 'exiting' ? 'transform 0.6s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
       }}
     >
       {/* Ambient glow */}

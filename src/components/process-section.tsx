@@ -1,6 +1,8 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FadeIn from './fade-in'
 import SectionHead from './section-head'
 
@@ -13,24 +15,61 @@ const steps = [
 ]
 
 export default function ProcessSection() {
-  const lineRef = useRef<HTMLDivElement>(null)
-  const [drawn, setDrawn] = useState(false)
+  const containerRef  = useRef<HTMLDivElement>(null)
+  const lineInnerRef  = useRef<HTMLDivElement>(null)
+  const dotRefs       = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    const el = lineRef.current
-    if (!el) return
+    gsap.registerPlugin(ScrollTrigger)
+
+    const container = containerRef.current
+    const lineInner = lineInnerRef.current
+    if (!container || !lineInner) return
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setDrawn(true)
+      gsap.set(lineInner, { scaleY: 1 })
+      dotRefs.current.forEach(d => d && gsap.set(d, { opacity: 1, scale: 1 }))
       return
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) { setDrawn(true); observer.disconnect() }
+
+    // Set initial hidden states
+    gsap.set(lineInner, { scaleY: 0, transformOrigin: 'top center' })
+    dotRefs.current.forEach(d => d && gsap.set(d, { opacity: 0, scale: 0 }))
+
+    // Scrub the vertical line as user scrolls through the steps
+    const lineST = gsap.to(lineInner, {
+      scaleY: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 68%',
+        end:   'bottom 55%',
+        scrub: 0.9,
       },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
+    })
+
+    // Reveal each dot when its row enters the viewport
+    const dotSTs = dotRefs.current.map((dot, i) => {
+      if (!dot) return null
+      return gsap.to(dot, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.45,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: dot,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        delay: i * 0.04,
+      })
+    })
+
+    return () => {
+      lineST.scrollTrigger?.kill()
+      dotSTs.forEach(t => t?.scrollTrigger?.kill())
+      ScrollTrigger.getAll().forEach(t => t.kill())
+    }
   }, [])
 
   return (
@@ -45,39 +84,45 @@ export default function ProcessSection() {
           />
         </FadeIn>
 
-        {/* Steps with animated left-rail line */}
-        <div className="relative" ref={lineRef}>
+        <div className="relative" ref={containerRef}>
           {/* Vertical rail */}
           <div className="absolute left-[27px] top-0 bottom-0 w-px bg-line hidden sm:block overflow-hidden">
             <div
+              ref={lineInnerRef}
               className="absolute inset-0 bg-accent origin-top"
-              style={{
-                transform: drawn ? 'scaleY(1)' : 'scaleY(0)',
-                transition: drawn ? 'transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s' : 'none',
-              }}
             />
           </div>
 
           {steps.map((s, i) => (
-            <FadeIn key={s.n} delay={i * 80}>
+            <FadeIn key={s.n} delay={i * 70}>
               <div
-                className={`grid grid-cols-[60px_1fr] lg:grid-cols-[80px_280px_1fr] gap-5 lg:gap-10 py-8 border-t border-line items-baseline ${i === steps.length - 1 ? 'border-b border-b-line' : ''}`}
+                className={`grid grid-cols-[60px_1fr] lg:grid-cols-[80px_280px_1fr] gap-5 lg:gap-10 py-8 border-t border-line items-baseline ${
+                  i === steps.length - 1 ? 'border-b border-b-line' : ''
+                }`}
               >
                 {/* Step number — sits on the rail */}
                 <div className="relative flex items-center justify-center sm:justify-start">
-                  {/* Dot on rail */}
+                  {/* Dot on rail — controlled by GSAP */}
                   <div
+                    ref={el => { dotRefs.current[i] = el }}
                     className="hidden sm:block absolute left-[20px] w-[14px] h-[14px] rounded-full border-2 border-accent bg-paper"
-                    style={{
-                      opacity: drawn ? 1 : 0,
-                      transform: drawn ? 'scale(1)' : 'scale(0)',
-                      transition: `opacity 0.3s ease ${0.4 + i * 0.12}s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1) ${0.4 + i * 0.12}s`,
-                    }}
                   />
-                  <div className="font-heading font-bold text-5xl text-accent leading-none" style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 48" }}>{s.n}</div>
+                  <div
+                    className="font-heading font-bold text-5xl text-accent leading-none"
+                    style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 48" }}
+                  >
+                    {s.n}
+                  </div>
                 </div>
-                <h3 className="m-0 font-heading font-bold text-4xl leading-none" style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 36" }}>{s.t}</h3>
-                <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 lg:col-span-1">{s.body}</p>
+                <h3
+                  className="m-0 font-heading font-bold text-4xl leading-none"
+                  style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 36" }}
+                >
+                  {s.t}
+                </h3>
+                <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 lg:col-span-1">
+                  {s.body}
+                </p>
               </div>
             </FadeIn>
           ))}

@@ -29,6 +29,60 @@ const offers = [
   },
 ]
 
+function CardContent({ o }: { o: typeof offers[number] }) {
+  return (
+    <>
+      {/* Top meta */}
+      <div className="flex justify-between items-center mb-[18px]">
+        <div className="mono" style={{ color: 'var(--color-accent)' }}>{o.time}</div>
+        {o.featured && (
+          <div className="font-mono text-[9px] tracking-widest uppercase bg-accent text-paper px-2 py-[3px] rounded">
+            Most common
+          </div>
+        )}
+      </div>
+
+      <h3 className="m-0 font-heading font-extrabold text-[32px] leading-[1.0]" style={{ letterSpacing: '-0.04em' }}>
+        {o.name}
+      </h3>
+      <p className="mt-3 mb-[22px] text-[14.5px] leading-[1.55] text-ink-2">{o.who}</p>
+
+      <div className="mt-auto">
+        {/* Includes */}
+        <div className="pt-[22px] mb-[22px] border-t border-line">
+          <div className="mono mb-2.5">Includes</div>
+          <ul className="flex flex-col gap-2 list-none p-0 m-0">
+            {o.includes.map(item => (
+              <li key={item} className="text-[13.5px] flex gap-2.5">
+                <span className="text-accent">+</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Price + CTA */}
+        <div className="flex justify-between items-end pt-[18px] border-t border-line">
+          <div>
+            <div className="mono">Starts at</div>
+            <div className="font-heading font-extrabold text-[30px]" style={{ letterSpacing: '-0.04em' }}>{o.price}</div>
+          </div>
+          <a
+            href="#form"
+            data-clarity-label={`offer-cta-${o.name.toLowerCase().replace(/\s+/g, '-')}`}
+            className={`${o.featured ? 'btn-primary' : 'btn-dark'} inline-flex items-center gap-2 rounded-full px-[18px] py-[11px] text-[13px] font-medium`}
+            style={{
+              background: o.featured ? 'var(--color-accent)' : 'var(--color-ink)',
+              color: 'var(--color-paper)',
+            }}
+          >
+            Get a quote <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </>
+  )
+}
+
 export default function OfferSection() {
   return (
     <section id="offer" className="py-28 border-t border-line">
@@ -45,62 +99,49 @@ export default function OfferSection() {
         <div className="grid md:grid-cols-3 gap-5">
           {offers.map((o, i) => (
             <FadeIn key={o.name} delay={i * 100}>
-              <TiltCard className="h-full">
-              <div
-                className="rounded-xl p-8 flex flex-col h-full"
-                style={{
-                  background: o.featured ? 'var(--color-paper-3)' : 'var(--color-paper-2)',
-                  color: 'var(--color-ink)',
-                  border: o.featured ? '1px solid var(--color-accent)' : '1px solid var(--color-line)',
-                  boxShadow: o.featured ? '0 0 40px oklch(0.572 0.095 52 / 0.10)' : 'none',
-                }}
-              >
-                {/* Top meta */}
-                <div className="flex justify-between items-center mb-[18px]">
-                  <div className="mono" style={{ color: 'var(--color-accent)' }}>{o.time}</div>
-                  {o.featured && (
-                    <div className="font-mono text-[9px] tracking-widest uppercase bg-accent text-paper px-2 py-[3px] rounded">
-                      Most common
-                    </div>
-                  )}
-                </div>
-
-                <h3 className="m-0 font-heading font-extrabold text-[32px] leading-[1.0]" style={{ letterSpacing: '-0.04em' }}>{o.name}</h3>
-                <p className="mt-3 mb-[22px] text-[14.5px] leading-[1.55] text-ink-2">
-                  {o.who}
-                </p>
-
-                <div className="mt-auto">
-                  {/* Includes */}
-                  <div className="pt-[22px] mb-[22px] border-t border-line">
-                    <div className="mono mb-2.5">Includes</div>
-                    <ul className="flex flex-col gap-2 list-none p-0 m-0">
-                      {o.includes.map(item => (
-                        <li key={item} className="text-[13.5px] flex gap-2.5">
-                          <span className="text-accent">+</span>{item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Price + CTA */}
-                  <div className="flex justify-between items-end pt-[18px] border-t border-line">
-                    <div>
-                      <div className="mono">Starts at</div>
-                      <div className="font-heading font-extrabold text-[30px]" style={{ letterSpacing: '-0.04em' }}>{o.price}</div>
-                    </div>
-                    <a
-                      href="#form"
-                      data-clarity-label={`offer-cta-${o.name.toLowerCase().replace(/\s+/g, '-')}`}
-                      className={`${o.featured ? 'btn-primary' : 'btn-dark'} inline-flex items-center gap-2 rounded-full px-[18px] py-[11px] text-[13px] font-medium text-paper`}
-                      style={{ background: o.featured ? 'var(--color-accent)' : 'var(--color-ink)' }}
+              {o.featured ? (
+                /* Featured card — spinning border beam wrapper */
+                <TiltCard className="h-full">
+                  <div
+                    className="relative rounded-xl overflow-hidden h-full"
+                    style={{ padding: '1.5px', background: '#C4BFB6' }}
+                  >
+                    {/* Spinning conic gradient that creates the beam */}
+                    <div
+                      className="absolute pointer-events-none"
+                      style={{
+                        inset: '-100%',
+                        background: 'conic-gradient(from 0deg, transparent 0deg, #A17248 22deg, #C4956A 30deg, transparent 52deg)',
+                        animation: 'border-spin 5s linear infinite',
+                      }}
+                      aria-hidden
+                    />
+                    {/* Inner card covers the center — border is what shows through */}
+                    <div
+                      className="relative rounded-[10px] p-8 flex flex-col h-full"
+                      style={{
+                        background: 'var(--color-paper-3)',
+                        boxShadow: '0 0 48px oklch(0.572 0.095 52 / 0.12)',
+                      }}
                     >
-                      Get a quote <span>&rarr;</span>
-                    </a>
+                      <CardContent o={o} />
+                    </div>
                   </div>
-                </div>
-              </div>
-              </TiltCard>
+                </TiltCard>
+              ) : (
+                /* Standard card */
+                <TiltCard className="h-full">
+                  <div
+                    className="rounded-xl p-8 flex flex-col h-full"
+                    style={{
+                      background: 'var(--color-paper-2)',
+                      border: '1px solid var(--color-line)',
+                    }}
+                  >
+                    <CardContent o={o} />
+                  </div>
+                </TiltCard>
+              )}
             </FadeIn>
           ))}
         </div>
