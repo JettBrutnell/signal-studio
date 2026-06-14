@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import FadeIn from './fade-in'
 import SectionHead from './section-head'
 
@@ -36,6 +37,36 @@ export default function WhySection() {
             </FadeIn>
           ))}
         </div>
+
+        {/* Founder note */}
+        <FadeIn delay={420}>
+          <div className="mt-12 grid md:grid-cols-[auto_1fr] gap-0 rounded-xl overflow-hidden border border-line">
+            <div className="relative hidden md:block w-[220px] flex-shrink-0">
+              <Image
+                src="/studio-hold.png"
+                alt="Clear Motive studio"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-paper-2/80 pointer-events-none" />
+            </div>
+            <div className="p-6 lg:p-8 bg-paper-2">
+              <p className="text-[16px] text-ink leading-[1.65] max-w-[560px]">
+                &ldquo;I started Clear Motive because I got tired of watching good businesses lose money on
+                creative that looked nice but didn&apos;t sell. Everything we build has a job to do.&rdquo;
+              </p>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-accent/20">
+                  <Image src="/cm-monogram.png" alt="" fill className="object-contain p-1" />
+                </div>
+                <div>
+                  <div className="font-heading font-bold text-[14px] text-ink" style={{ letterSpacing: '-0.02em' }}>Jett Brutnell</div>
+                  <div className="font-mono text-[9px] tracking-widest uppercase text-ink-4">Founder, Clear Motive</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

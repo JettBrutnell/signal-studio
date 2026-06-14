@@ -308,6 +308,28 @@ textarea:focus-visible {
   animation: shimmer-x 3.5s ease-in-out infinite 1s;
 }
 
+/* ── Global grain texture overlay ──────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url('/grain-texture.png');
+  background-size: 220px 220px;
+  opacity: 0.032;
+  mix-blend-mode: overlay;
+}
+
+/* Image cards — subtle lift on hover */
+.img-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.img-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px oklch(0 0 0 / 0.45);
+}
+
 /* Placeholder visual pattern — for mock assets */
 .placeholder-img {
   position: relative;

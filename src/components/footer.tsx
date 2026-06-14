@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Footer() {
   return (
     <footer className="pt-20 pb-10 border-t border-line">
@@ -6,8 +8,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <a href="#top" className="flex items-center gap-3 mb-[22px]">
-              <div className="w-7 h-7 rounded-full bg-accent relative animate-ring-pulse">
-                <div className="absolute inset-2 rounded-full bg-paper" />
+              <div className="relative w-9 h-9 flex-shrink-0">
+                <Image src="/cm-monogram.png" alt="Clear Motive" fill className="object-contain" />
               </div>
               <div className="font-heading font-bold text-lg tracking-tight text-ink">
                 Clear <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 700, fontVariationSettings: "'WONK' 1" }} className="text-ink-3">Motive</span>
