@@ -85,8 +85,8 @@ export default function ProcessSection() {
         </FadeIn>
 
         <div className="relative" ref={containerRef}>
-          {/* Vertical rail */}
-          <div className="absolute left-[27px] top-0 bottom-0 w-px bg-line hidden sm:block overflow-hidden">
+          {/* Vertical rail — centred in the 28px dot column */}
+          <div className="absolute left-[13px] top-0 bottom-0 w-px bg-line hidden sm:block overflow-hidden">
             <div
               ref={lineInnerRef}
               className="absolute inset-0 bg-accent origin-top"
@@ -96,31 +96,33 @@ export default function ProcessSection() {
           {steps.map((s, i) => (
             <FadeIn key={s.n} delay={i * 70}>
               <div
-                className={`grid grid-cols-[60px_1fr] lg:grid-cols-[80px_280px_1fr] gap-5 lg:gap-10 py-8 border-t border-line items-baseline ${
+                className={`grid grid-cols-[60px_1fr] sm:grid-cols-[28px_60px_1fr] lg:grid-cols-[28px_80px_280px_1fr] gap-5 lg:gap-10 py-8 border-t border-line items-baseline ${
                   i === steps.length - 1 ? 'border-b border-b-line' : ''
                 }`}
               >
-                {/* Step number — sits on the rail */}
-                <div className="relative flex items-center justify-center sm:justify-start">
-                  {/* Dot on rail — controlled by GSAP */}
+                {/* Rail dot — own column, outside the number */}
+                <div className="hidden sm:flex items-center justify-center self-center">
                   <div
                     ref={el => { dotRefs.current[i] = el }}
-                    className="hidden sm:block absolute left-[20px] w-[14px] h-[14px] rounded-full border-2 border-accent bg-paper"
+                    className="w-[14px] h-[14px] rounded-full border-2 border-accent bg-paper flex-shrink-0"
                   />
-                  <div
-                    className="font-heading font-bold text-5xl text-accent leading-none"
-                    style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 48" }}
-                  >
-                    {s.n}
-                  </div>
                 </div>
+
+                {/* Step number */}
+                <div
+                  className="font-heading font-bold text-5xl text-accent leading-none"
+                  style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 48" }}
+                >
+                  {s.n}
+                </div>
+
                 <h3
                   className="m-0 font-heading font-bold text-4xl leading-none"
                   style={{ letterSpacing: '-0.03em', fontVariationSettings: "'opsz' 36" }}
                 >
                   {s.t}
                 </h3>
-                <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 lg:col-span-1">
+                <p className="m-0 text-base text-ink-2 leading-[1.6] max-w-[620px] col-span-2 sm:col-span-3 lg:col-span-1">
                   {s.body}
                 </p>
               </div>
