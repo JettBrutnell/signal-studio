@@ -70,8 +70,7 @@ export default function LoadingScreen() {
         <div className="overflow-hidden">
           <h2
             className="font-heading font-extrabold text-[clamp(36px,6vw,64px)] loader-text"
-            style={{ color: '#F0EBE3' }}
-            style={{ lineHeight: 0.92, letterSpacing: '-0.04em' }}
+            style={{ color: '#F0EBE3', lineHeight: 0.92, letterSpacing: '-0.04em' }}
           >
             Clear{' '}
             <span
