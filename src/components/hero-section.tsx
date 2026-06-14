@@ -70,7 +70,7 @@ export default function HeroSection() {
       {/* ── Full-bleed background image ── */}
       <div className="absolute inset-0">
         <Image
-          src="/studio-desk.png"
+          src="/hero.png"
           alt=""
           fill
           priority

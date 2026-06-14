@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import FadeIn from './fade-in'
 import SectionHead from './section-head'
 import TiltCard from './tilt-card'
-import { MiniAd, MiniLP } from './mock-visuals'
 
 const cards = [
   {
@@ -9,29 +9,24 @@ const cards = [
     title: 'Paid Social Creative',
     desc: 'Static and motion-ready ad concepts built around hooks, offer clarity, safe zones, and platform-ready layouts.',
     deliv: ['Meta ad creatives', 'Story, square, and landscape formats', 'Hook and CTA variants', 'Campaign concept directions'],
-    visual: <MiniAd ratio="4/5" headline="Hook · 6s read" sub="Pain → product" brand="STUDIO" cta="See more" label="1:1" />,
+    img: '/service-ads.png',
+    imgAlt: 'Paid social ad creative examples',
   },
   {
     n: '02',
     title: 'Landing Pages',
     desc: 'Clean landing pages built to explain the offer, build trust, handle objections, and drive enquiries.',
     deliv: ['Landing page structure', 'Copy hierarchy', 'Framer or Figma designs', 'CTA and form strategy'],
-    visual: <MiniLP headline="A page that earns its click." sub="Built for the campaign, not the brand site." cta="Continue" />,
+    img: '/service-landing.png',
+    imgAlt: 'Landing page design on laptop and mobile',
   },
   {
     n: '03',
     title: 'Campaign Asset Systems',
     desc: 'Launch-ready creative sets that keep ads, landing pages, and campaign messaging consistent.',
     deliv: ['Ad sets across ratios', 'Landing page sections', 'Visual direction', 'Campaign messaging', 'Creative variants'],
-    visual: (
-      <div className="relative h-full grid grid-cols-2 gap-2 p-1">
-        <MiniAd ratio="9/16" brand="BRAND" cta="Shop" />
-        <div className="flex flex-col gap-2">
-          <MiniAd ratio="1/1" brand="BRAND" cta="Shop" />
-          <div className="placeholder-img flex-1 text-[9px]">LP / hero</div>
-        </div>
-      </div>
-    ),
+    img: '/service-campaign.png',
+    imgAlt: 'Full campaign asset system across formats',
   },
 ]
 
@@ -53,11 +48,15 @@ export default function ServicesSection() {
             <FadeIn key={c.n} delay={i * 100}>
               <TiltCard className="h-full">
                 <div className="bg-paper border border-line rounded-xl overflow-hidden flex flex-col h-full">
-                  {/* Visual area with shimmer */}
-                  <div className="aspect-[4/3] border-b border-line bg-paper-2 relative overflow-hidden shimmer-line">
-                    <div className="absolute inset-5 flex items-center justify-center">
-                      <div className="w-[70%] max-h-full">{c.visual}</div>
-                    </div>
+                  {/* Visual area */}
+                  <div className="aspect-[4/3] border-b border-line relative overflow-hidden">
+                    <Image
+                      src={c.img}
+                      alt={c.imgAlt}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover object-center"
+                    />
                   </div>
                   {/* Content */}
                   <div className="p-6 lg:p-7 flex-1 flex flex-col">

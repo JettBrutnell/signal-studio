@@ -43,11 +43,11 @@ export default function WhySection() {
           <div className="mt-12 grid md:grid-cols-[auto_1fr] gap-0 rounded-xl overflow-hidden border border-line">
             <div className="relative hidden md:block w-[220px] flex-shrink-0">
               <Image
-                src="/studio-hold.png"
-                alt="Clear Motive studio"
+                src="/founder-portrait.png"
+                alt="Jett Brutnell, founder of Clear Motive"
                 fill
                 sizes="220px"
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-paper-2/80 pointer-events-none" />
             </div>
@@ -57,8 +57,8 @@ export default function WhySection() {
                 creative that looked nice but didn&apos;t sell. Everything we build has a job to do.&rdquo;
               </p>
               <div className="mt-5 flex items-center gap-3">
-                <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-accent/20">
-                  <Image src="/cm-monogram.png" alt="" fill className="object-contain p-1" />
+                <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+                  <Image src="/founder-portrait.png" alt="Jett Brutnell" fill sizes="36px" className="object-cover object-top" />
                 </div>
                 <div>
                   <div className="font-heading font-bold text-[14px] text-ink" style={{ letterSpacing: '-0.02em' }}>Jett Brutnell</div>
