@@ -38,7 +38,7 @@ export default function ProcessSection() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
           <SectionHead
-            num="04"
+            num="03"
             kicker="How the work gets done"
             title={<>A short, <span className="italic-accent">honest</span> process.</>}
             sub="Five steps. Most projects move through them in two to three weeks. No account managers, no kickoff theatre."

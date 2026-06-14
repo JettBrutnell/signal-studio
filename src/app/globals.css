@@ -1,37 +1,43 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Dark palette */
-  --color-paper:   oklch(0.13 0.005 260);
-  --color-paper-2: oklch(0.17 0.005 260);
-  --color-paper-3: oklch(0.21 0.005 260);
+  /* ── Clear Motive palette — Style Guide v1.0 ─────────────── */
 
-  /* Light ink tones */
-  --color-ink:   oklch(0.94 0.005 80);
-  --color-ink-2: oklch(0.72 0.010 80);
-  --color-ink-3: oklch(0.52 0.010 80);
-  --color-ink-4: oklch(0.36 0.008 80);
+  /* Warm paper — main backgrounds (light site) */
+  --color-paper:   #F4F1EA;   /* warm paper */
+  --color-paper-2: #E6DED2;   /* bone */
+  --color-paper-3: #D8D3C6;   /* warm rule / subtle alt bg */
+
+  /* Ink — charcoal family */
+  --color-ink:   #353534;     /* charcoal — primary text */
+  --color-ink-2: #68442C;     /* umber — secondary text */
+  --color-ink-3: #8A7060;     /* muted warm */
+  --color-ink-4: #B8A898;     /* very muted */
 
   /* Rules / borders */
-  --color-line:   oklch(0.22 0.005 260);
-  --color-line-2: oklch(0.30 0.008 260);
+  --color-line:   #D8D3C6;    /* warm border */
+  --color-line-2: #C4BFB6;    /* slightly stronger */
 
-  /* Light blue accent — readable on dark, reserved for primary actions */
-  --color-accent:      oklch(0.72 0.12 230);
-  --color-accent-2:    oklch(0.64 0.14 230);
-  --color-accent-soft: oklch(0.72 0.12 230 / 0.10);
+  /* Copper — primary accent / CTA */
+  --color-accent:      #A17248;
+  --color-accent-2:    #8A5E36;
+  --color-accent-soft: oklch(0.572 0.095 52 / 0.12);
 
   /* Font stacks */
   --font-heading: var(--font-syne),      "Helvetica Neue", system-ui, sans-serif;
   --font-serif:   var(--font-fraunces),  "Georgia", serif;
   --font-sans:    var(--font-jakarta),   "Helvetica Neue", system-ui, sans-serif;
   --font-mono:    var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  /* Hero dark zone */
+  --color-hero:   #1C1614;
+  --color-hero-2: #2A2119;
 }
 
 html {
   scroll-behavior: smooth;
   background: var(--color-paper);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -47,7 +53,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-paper);
+  color: #F4F1EA;
 }
 
 /* Shared typography utilities */
@@ -76,18 +82,32 @@ body {
   color: var(--color-ink-3);
 }
 
-/* ── Button effects ──────────────────────────────── */
+/* ── Hero dark zone ───────────────────────────────────────── */
+/* Applied to <section id="top"> so all child tokens resolve correctly */
+.hero-zone {
+  background: var(--color-hero);
+  --color-ink:   #F0EBE3;
+  --color-ink-2: #C4B8AC;
+  --color-ink-3: #8A7A6E;
+  --color-ink-4: #5A4E46;
+  --color-line:  #3A302A;
+  --color-line-2: #4A3E36;
+  --color-paper:  #1C1614;
+  --color-paper-2: #2A2119;
+  --color-paper-3: #362B22;
+}
 
-/* Primary CTA — breathing idle glow + shimmer + lift */
+/* ── Button effects ──────────────────────────────────────── */
+
+/* Primary CTA — solid copper, shimmer on hover, quiet lift */
 .btn-primary {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   transition:
     transform  0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.25s ease,
-    background 0.18s ease;
-  animation: btn-breathe 3.5s ease-in-out infinite;
+    box-shadow 0.22s ease,
+    background 0.15s ease;
 }
 .btn-primary::before {
   content: '';
@@ -96,7 +116,7 @@ body {
   background: linear-gradient(
     105deg,
     transparent  20%,
-    oklch(1 0 0 / 0.18) 50%,
+    oklch(1 0 0 / 0.15) 50%,
     transparent  80%
   );
   transform: translateX(-120%) skewX(-10deg);
@@ -104,20 +124,17 @@ body {
   z-index: 1;
 }
 .btn-primary:hover {
-  animation: none;
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-2px) scale(1.01);
   box-shadow:
-    0 0  18px 1px oklch(0.72 0.12 230 / 0.55),
-    0 0  40px 8px oklch(0.72 0.12 230 / 0.22),
-    0  8px 24px    oklch(0.72 0.12 230 / 0.20);
+    0 4px 18px oklch(0.572 0.095 52 / 0.35),
+    0 8px 32px oklch(0.572 0.095 52 / 0.15);
 }
 .btn-primary:hover::before {
   transform: translateX(160%) skewX(-10deg);
-  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .btn-primary:active {
-  transform: translateY(-1px) scale(0.99);
-  animation: none;
+  transform: translateY(0) scale(0.99);
 }
 
 /* Secondary / ghost button */
@@ -128,51 +145,37 @@ body {
     transform  0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
     border-color 0.2s ease,
     color 0.2s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.22s ease;
 }
 .btn-secondary:hover {
   transform: translateY(-2px);
   border-color: var(--color-accent) !important;
-  color: var(--color-ink) !important;
-  box-shadow: 0 0 12px 0px oklch(0.72 0.12 230 / 0.25),
-              inset 0 0 20px oklch(0.72 0.12 230 / 0.04);
+  color: var(--color-accent) !important;
+  box-shadow: 0 0 10px oklch(0.572 0.095 52 / 0.18);
 }
 
-/* Dark submit button */
+/* Dark submit / non-featured CTA */
 .btn-dark {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.25s ease;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease, box-shadow 0.22s ease;
 }
 .btn-dark::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 20%, oklch(1 0 0 / 0.08) 50%, transparent 80%);
+  background: linear-gradient(105deg, transparent 20%, oklch(1 0 0 / 0.07) 50%, transparent 80%);
   transform: translateX(-120%) skewX(-10deg);
   z-index: 1;
 }
 .btn-dark:hover {
   transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 6px 24px oklch(0 0 0 / 0.35);
+  box-shadow: 0 6px 20px oklch(0 0 0 / 0.25);
 }
 .btn-dark:hover::before {
   transform: translateX(160%) skewX(-10deg);
   transition: transform 0.5s ease;
-}
-
-@keyframes btn-breathe {
-  0%, 100% {
-    box-shadow:
-      0 0  8px 0px oklch(0.72 0.12 230 / 0.30),
-      0 0 20px 2px oklch(0.72 0.12 230 / 0.12);
-  }
-  50% {
-    box-shadow:
-      0 0 16px 2px oklch(0.72 0.12 230 / 0.50),
-      0 0 36px 8px oklch(0.72 0.12 230 / 0.20);
-  }
 }
 
 /* Loading screen animations */
@@ -195,28 +198,28 @@ body {
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Hero background — single subtle glow, masked grid */
+/* Hero background — subtle warm grid */
 .hero-grid {
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.025) 1px, transparent 1px);
+    linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 10%, transparent 60%);
 }
 
-/* Dark-themed native form controls */
+/* Dark-themed native form controls in the CTA form */
 select option {
   background: var(--color-paper-2);
   color: var(--color-ink);
 }
 
-/* Visible focus ring for keyboard navigation */
+/* Visible focus ring */
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   border-color: var(--color-accent) !important;
-  outline: 2px solid oklch(0.72 0.12 230 / 0.25);
+  outline: 2px solid oklch(0.572 0.095 52 / 0.22);
   outline-offset: 2px;
 }
 
@@ -228,6 +231,28 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ── Global grain texture overlay ──────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url('/grain-texture.png');
+  background-size: 220px 220px;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
+}
+
+/* Image cards */
+.img-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.img-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px oklch(0 0 0 / 0.12);
 }
 
 /* ── Animation keyframes ─────────────────────────────────────── */
@@ -263,16 +288,17 @@ textarea:focus-visible {
   50%       { opacity: 0.14; transform: scale(1.08); }
 }
 
-/* Equalizer bars (for loading screen) */
+/* Equalizer bars */
 @keyframes eq-1 { 0%,100%{height:4px}  35%{height:30px} 65%{height:14px} }
 @keyframes eq-2 { 0%,100%{height:14px} 20%{height:46px} 55%{height:6px}  }
 @keyframes eq-3 { 0%,100%{height:22px} 40%{height:54px} 70%{height:10px} }
 @keyframes eq-4 { 0%,100%{height:10px} 50%{height:40px} 80%{height:18px} }
 @keyframes eq-5 { 0%,100%{height:18px} 30%{height:48px} 60%{height:4px}  }
 
+/* Copper ring pulse */
 @keyframes ring-pulse {
-  0%   { box-shadow: 0 0 0 0px  oklch(0.72 0.12 230 / 0.45); }
-  100% { box-shadow: 0 0 0 10px oklch(0.72 0.12 230 / 0);    }
+  0%   { box-shadow: 0 0 0 0px  oklch(0.572 0.095 52 / 0.50); }
+  100% { box-shadow: 0 0 0 10px oklch(0.572 0.095 52 / 0);    }
 }
 
 @keyframes draw-down {
@@ -304,37 +330,15 @@ textarea:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 0.10) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 0.12) 50%, transparent 100%);
   animation: shimmer-x 3.5s ease-in-out infinite 1s;
 }
 
-/* ── Global grain texture overlay ──────────────────────────── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  background-image: url('/grain-texture.png');
-  background-size: 220px 220px;
-  opacity: 0.032;
-  mix-blend-mode: overlay;
-}
-
-/* Image cards — subtle lift on hover */
-.img-card {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-.img-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px oklch(0 0 0 / 0.45);
-}
-
-/* Placeholder visual pattern — for mock assets */
+/* Placeholder visual pattern */
 .placeholder-img {
   position: relative;
   background:
-    repeating-linear-gradient(135deg, transparent 0 12px, oklch(1 0 0 / 0.04) 12px 13px),
+    repeating-linear-gradient(135deg, transparent 0 12px, oklch(0 0 0 / 0.04) 12px 13px),
     var(--color-paper-2);
   border: 1px solid var(--color-line);
   border-radius: 8px;

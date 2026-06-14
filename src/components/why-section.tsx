@@ -17,7 +17,7 @@ export default function WhySection() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
           <SectionHead
-            num="03"
+            num="02"
             kicker="Why Clear Motive"
             title={<>Six reasons teams <span className="italic-accent">keep coming back.</span></>}
             sub="No testimonial wall. No client logos. Just the commitments we make on every project — and why they matter."

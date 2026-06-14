@@ -35,7 +35,7 @@ export default function OfferSection() {
       <div className="max-w-[1240px] mx-auto px-[clamp(24px,5vw,64px)]">
         <FadeIn>
           <SectionHead
-            num="05"
+            num="04"
             kicker="Starting points"
             title={<>Three ways to <span className="italic-accent">begin together.</span></>}
             sub="Fixed-scope projects. Most engagements start in one of these three shapes. Custom scopes available on request."
@@ -52,7 +52,7 @@ export default function OfferSection() {
                   background: o.featured ? 'var(--color-paper-3)' : 'var(--color-paper-2)',
                   color: 'var(--color-ink)',
                   border: o.featured ? '1px solid var(--color-accent)' : '1px solid var(--color-line)',
-                  boxShadow: o.featured ? '0 0 40px oklch(0.72 0.12 230 / 0.08)' : 'none',
+                  boxShadow: o.featured ? '0 0 40px oklch(0.572 0.095 52 / 0.10)' : 'none',
                 }}
               >
                 {/* Top meta */}

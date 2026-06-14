@@ -1,7 +1,6 @@
 import Navbar from '@/components/navbar'
 import HeroSection from '@/components/hero-section'
 import ServicesSection from '@/components/services-section'
-import WorkSection from '@/components/work-section'
 import WhySection from '@/components/why-section'
 import ProcessSection from '@/components/process-section'
 import OfferSection from '@/components/offer-section'
@@ -18,7 +17,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <ServicesSection />
-        <WorkSection />
         <WhySection />
         <ProcessSection />
         <OfferSection />

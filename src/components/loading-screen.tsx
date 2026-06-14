@@ -38,8 +38,9 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-paper"
+      className="fixed inset-0 z-[100] flex items-center justify-center"
       style={{
+        background: '#1C1614',
         transform: phase === 'exiting' ? 'translateY(-100%)' : 'translateY(0)',
         transition: phase === 'exiting' ? 'transform 0.9s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
       }}
@@ -48,7 +49,7 @@ export default function LoadingScreen() {
       <div
         className="absolute w-[500px] h-[300px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, oklch(0.72 0.12 230 / 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, oklch(0.572 0.095 52 / 0.10) 0%, transparent 70%)',
           animation: 'glow-pulse 3s ease-in-out infinite',
         }}
       />
@@ -68,7 +69,8 @@ export default function LoadingScreen() {
         {/* Brand name */}
         <div className="overflow-hidden">
           <h2
-            className="font-heading font-extrabold text-[clamp(36px,6vw,64px)] text-ink loader-text"
+            className="font-heading font-extrabold text-[clamp(36px,6vw,64px)] loader-text"
+            style={{ color: '#F0EBE3' }}
             style={{ lineHeight: 0.92, letterSpacing: '-0.04em' }}
           >
             Clear{' '}
@@ -88,7 +90,7 @@ export default function LoadingScreen() {
 
         {/* Tagline */}
         <div className="overflow-hidden">
-          <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-ink-4 loader-tagline">
+          <p className="font-mono text-[10px] tracking-[0.14em] uppercase loader-tagline" style={{ color: '#5A4E46' }}>
             Creative that converts
           </p>
         </div>
